@@ -138,6 +138,7 @@ body {
 .item-description p {
     margin-left: 5px;
     line-height: 21px;
+    font-size: 15px;
 }
 
 .item-description ul {
