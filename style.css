@@ -62,6 +62,7 @@ body {
 .section {
     margin: 0px;
     margin-top: 12px;
+    background-color: #fff;
 }
 
 .header {
@@ -122,7 +123,7 @@ body {
     letter-spacing: -.3px;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out;
+    transition: max-height .5s ease-out;
 }
 
 .item-description ul {
@@ -138,7 +139,6 @@ body {
 .item-description p {
     margin-left: 5px;
     line-height: 21px;
-    font-size: 15px;
 }
 
 .item-description ul {
