@@ -48,7 +48,7 @@ main {
 }
 
 .paperContent {
-    height: 0;
+    height: fit-content;
     width: 100%;
     transition: var(--heightTransition);
     overflow: hidden;
@@ -57,6 +57,8 @@ main {
 
 .topContainer {
     padding-bottom: 5px;
+    height: 0;
+    transition: var(--heightTransition);
 }
 
 .paperName {
@@ -67,10 +69,11 @@ main {
     margin-top: 5px;
     margin-bottom: 10px;
     text-align: center;
-    width: 100%;
+    width: 0;
+    height: 0;
     text-wrap: nowrap;
     overflow: hidden;
-    transition: var(--widthTransition);
+    transition: var(--widthTransition), var(--heightTransition);
 }
 
 .contacts {
@@ -79,9 +82,11 @@ main {
     align-items: center;
     gap: 10px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: 10px;
-    transition: var(--widthTransition);
+    width: 0;
+    height: auto;
+    transition: var(--widthTransition), var(--heightTransition);
     text-wrap: nowrap;
     overflow: hidden;
 }
@@ -111,6 +116,7 @@ main {
     margin-bottom: 8px;
     background-color: #fff;
     height: fit-content;
+    overflow: hidden;
     transition: var(--heightTransition);
 }
 
@@ -118,7 +124,6 @@ main {
     display: flex;
     justify-content: left;
     align-content: left;
-    margin: 0px;
     width: 100%;
     height: 0;
     transition: var(--heightTransition);
@@ -130,7 +135,6 @@ main {
     font-family: 'Gill Sans MT';
     font-size: 15px;
     letter-spacing: 2px;
-    margin: 0px;
     font-weight: normal;
 }
 
@@ -142,7 +146,6 @@ main {
     background-color: #70AD47;
     margin-left: 13px;
     margin-top: 9px;
-    margin-bottom: 0px;
 }
 
 .details {
@@ -151,14 +154,12 @@ main {
     height: 0;
     overflow: hidden;
     transition: var(--heightTransition);
-    margin: 0px;
     margin-left: 45px;
-    margin-top: 3px;
+    padding-top: 3px;
     margin-right: 45px;
 }
 
 .item {
-    margin: 0px;
     width: 0;
     overflow: hidden;
     text-wrap: nowrap;
@@ -166,11 +167,10 @@ main {
 }
 
 .item-title {
-    margin: 0px;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 7px;
+    padding-top: 7px;
 }
 
 .date {
@@ -178,25 +178,21 @@ main {
 }
 
 .item-description {
-    margin: 0px;
     padding-top: 5.5px;
     margin-left: 20px;
     letter-spacing: -.3px;
-    max-height: 0;
     overflow: hidden;
 }
 
 .item-description ul {
     list-style-type: disc;
     margin-left: 20px;
-    margin-bottom: 0;
-    padding-bottom: 0;
     text-wrap: pretty;
 }
 
 .item-description li {
-    margin-bottom: 3px;
-    margin-top: 2px;
+    padding-bottom: 3px;
+    padding-top: 2px;
 }
 
 .item-description p {
@@ -207,8 +203,6 @@ main {
 button.collapsible {
     background: none;
     border: none;
-    padding: 0;
-    margin: 0;
     text-align: left;
     width: 100%;
     cursor: pointer;

@@ -22,6 +22,7 @@ export default function ResumeRebuild() {
     const Contacts1Ref = useRef(null);
     const Contacts2Ref = useRef(null);
     const Contacts3Ref = useRef(null);
+    const Contacts4Ref = useRef(null);
 
     const HR1Ref = useRef(null);
     const HR2Ref = useRef(null);
@@ -51,6 +52,7 @@ export default function ResumeRebuild() {
     const Item20Ref = useRef(null);
     const Item21Ref = useRef(null);
     const Item22Ref = useRef(null);
+    const Item23Ref = useRef(null);
     const Item30Ref = useRef(null);
     const Item31Ref = useRef(null);
     const Item32Ref = useRef(null);
@@ -62,13 +64,14 @@ export default function ResumeRebuild() {
     const Arrow20Ref = useRef(null);
     const Arrow21Ref = useRef(null);
     const Arrow22Ref = useRef(null);
+    const Arrow23Ref = useRef(null);
     const Arrow30Ref = useRef(null);
     const Arrow31Ref = useRef(null);
     const Arrow32Ref = useRef(null);
     const Arrow40Ref = useRef(null);
 
     // Variable responsible for the amount of time between transitions
-    const delay = 200;
+    const delay = 250;
 
     // Step 1: Transition Paper Width and Padding
     useEffect(() => {
@@ -76,43 +79,37 @@ export default function ResumeRebuild() {
             const timer = setTimeout(() => {
                 PaperRef.current.style.width = `1100px`;
                 PaperRef.current.style.padding = "45px";
+                TopContainerRef.current.style.height = `${41+17+25}px`;
                 setTriggerStep(2);
             }, delay);
             return () => clearTimeout(timer);
         }
     }, [triggerStep])
 
-    // Step 2: Expand the Paper Content to Full Height
+    // Step 2: Expand Name and Contacts
     useEffect(() => {
         if (triggerStep === 2) {
             const timer = setTimeout(() => {
-                PaperContentRef.current.style.height = `fit-content`;
-                setTriggerStep(3);
+
+                
+                PaperNameRef.current.style.width = `100%`;
+                PaperNameRef.current.style.height = `${PaperNameRef.current.scrollHeight}px`;
+                ContactsRef.current.style.width = `100%`;
+                setTriggerStep(3)
             }, delay);
             return () => clearTimeout(timer);
         }
     }, [triggerStep])
 
-    // Step 3: Expand Name and Contacts
+    // Step 3: Expand Individual Contacts
     useEffect(() => {
         if (triggerStep === 3) {
-            const timer = setTimeout(() => {
-                PaperNameRef.current.style.width = `100%`;
-                ContactsRef.current.style.width = `100%`;
-                setTriggerStep(4)
-            }, delay);
-            return () => clearTimeout(timer);
-        }
-    }, [triggerStep])
-
-    // Step 4: Expand Individual Contacts
-    useEffect(() => {
-        if (triggerStep === 4) {
             const timer = setTimeout(() => {
                 const refs = [
                     Contacts1Ref,
                     Contacts2Ref,
                     Contacts3Ref,
+                    Contacts4Ref,
                 ]
 
                 refs.forEach(ref => {
@@ -120,15 +117,15 @@ export default function ResumeRebuild() {
                     ref.current.style.width = `${contactWidth}px`
                 })
 
-                setTriggerStep(5);
+                setTriggerStep(4);
             }, delay);
             return () => clearTimeout(timer);
         }
     }, [triggerStep]);
 
-    // Step 5: Expand Page for the Headers
+    // Step 4: Expand Page for the Headers
     useEffect(() => {
-        if (triggerStep === 5) {
+        if (triggerStep === 4) {
             const timer = setTimeout(() => {
                 const subDelay = 100;
                 const refs = [
@@ -142,49 +139,49 @@ export default function ResumeRebuild() {
 
                 refs.forEach((ref, index) => {
                     setTimeout(() => {
-                        if(ref.current) {
+                        if (ref.current) {
                             ref.current.style.height = `${ref.current.scrollHeight}px`;
                         }
-                    }, subDelay * index);                    
+                    }, subDelay * index);
                 })
+                setTriggerStep(5);
+            }, delay);
+            return () => clearTimeout(timer);
+        }
+    }, [triggerStep]);
+
+    // Step 5: Expand the HR lines for each header
+    useEffect(() => {
+        if (triggerStep === 5) {
+            const timer = setTimeout(() => {
+                const subDelay = 100;
+                const refs = [
+                    HR1Ref,
+                    HR2Ref,
+                    HR3Ref,
+                    HR4Ref,
+                    HR5Ref,
+                    HR6Ref,
+                ]
+
+                refs.forEach((ref, index) => {
+                    if (ref.current) {
+                        setTimeout(() => {
+                            ref.current.style.flexGrow = '1';
+                        }, subDelay * index)
+
+                    }
+                })
+
                 setTriggerStep(6);
             }, delay);
             return () => clearTimeout(timer);
         }
     }, [triggerStep]);
 
-    // Step 6: Expand the HR lines for each header
+    // Step 6: Expand page for the section details and expand sections
     useEffect(() => {
         if (triggerStep === 6) {
-            const timer = setTimeout(() => {
-                const subDelay = 100;
-                const refs = [
-                    HR1Ref, 
-                    HR2Ref, 
-                    HR3Ref, 
-                    HR4Ref, 
-                    HR5Ref, 
-                    HR6Ref,
-                ]
-
-                refs.forEach((ref, index) => {
-                    if(ref.current) {
-                        setTimeout(() => {
-                            ref.current.style.flexGrow = '1';
-                        }, subDelay * index)
-                        
-                    }
-                })
-
-                setTriggerStep(7);
-            }, delay);
-            return () => clearTimeout(timer);
-        }
-    }, [triggerStep]);
-
-    // Step 7: Expand page for the section details and expand sections
-    useEffect(() => {
-        if (triggerStep === 7) {
             const timer = setTimeout(() => {
                 const subDelay = 100;
                 const refs = [
@@ -205,15 +202,15 @@ export default function ResumeRebuild() {
                     }, subDelay * index);
                 });
 
-                setTriggerStep(8);
+                setTriggerStep(7);
             }, delay);
             return () => clearTimeout(timer);
         }
     }, [triggerStep]);
 
-    // Step 8: Expand each item in the section
+    // Step 7: Expand each item in the section
     useEffect(() => {
-        if (triggerStep === 8) {
+        if (triggerStep === 7) {
             const timer = setTimeout(() => {
                 const subDelay = 50;
                 const refs = [
@@ -224,6 +221,7 @@ export default function ResumeRebuild() {
                     Item20Ref,
                     Item21Ref,
                     Item22Ref,
+                    Item23Ref,
                     Item30Ref,
                     Item31Ref,
                     Item32Ref,
@@ -239,15 +237,15 @@ export default function ResumeRebuild() {
                     }, subDelay * index);
                 });
 
-                setTriggerStep(9);
+                setTriggerStep(8);
             }, delay);
             return () => clearTimeout(timer);
         }
     }, [triggerStep]);
 
-    // Step 9: Expand each arrow
+    // Step 8: Expand each arrow
     useEffect(() => {
-        if (triggerStep === 9) {
+        if (triggerStep === 8) {
             const timer = setTimeout(() => {
                 const arrowHeight = Arrow00Ref.current.scrollHeight;
                 const subDelay = 100;
@@ -257,6 +255,7 @@ export default function ResumeRebuild() {
                     Arrow20Ref,
                     Arrow21Ref,
                     Arrow22Ref,
+                    Arrow23Ref,
                     Arrow30Ref,
                     Arrow31Ref,
                     Arrow32Ref,
@@ -271,16 +270,16 @@ export default function ResumeRebuild() {
                     }, subDelay * index);
                 });
 
-                setTriggerStep(10);
+                setTriggerStep(9);
             }, delay + 100);
             return () => clearTimeout(timer);
         }
     }, [triggerStep]);
 
-    // Step 10: set details, items, and paper content to 'visible' for the PowerBI Iframes,
+    // Step 9: set details, items, and paper content to 'visible' for the PowerBI Iframes,
     // set detail heights to "fit-content" so that they respond to when items are collapse-toggled
     useEffect(() => {
-        if (triggerStep === 10) {
+        if (triggerStep === 9) {
             const timer = setTimeout(() => {
 
                 const visible = [
@@ -324,7 +323,7 @@ export default function ResumeRebuild() {
                     }
                 })
 
-                setTriggerStep(11);
+                setTriggerStep(10);
             }, delay * 4);
             return () => clearTimeout(timer);
         }
@@ -411,6 +410,8 @@ export default function ResumeRebuild() {
                         return Item21Ref;
                     case (2):
                         return Item22Ref;
+                    case (3):
+                        return Item23Ref;
                 }
             case (3):
                 switch (itemIndex) {
@@ -454,6 +455,8 @@ export default function ResumeRebuild() {
                         return Arrow21Ref;
                     case (2):
                         return Arrow22Ref;
+                    case (3):
+                        return Arrow23Ref;
                 }
             case (3):
                 switch (itemIndex) {
@@ -597,21 +600,18 @@ export default function ResumeRebuild() {
                 <div
                     className='paperContent'
                     ref={PaperContentRef}
-                    style={{ height: '0' }}
                 >
                     <div className='topContainer'
                         ref={TopContainerRef}>
                         <div
                             className='paperName'
                             ref={PaperNameRef}
-                            style={{ width: '0' }}
                         >
                             {resumeBasic.name}
                         </div>
                         <div
                             className='contacts'
                             ref={ContactsRef}
-                            style={{ width: '0' }}
                         >
                             <a
                                 href={"mailto:" + resumeBasic.email}
@@ -632,6 +632,13 @@ export default function ResumeRebuild() {
                                 ref={Contacts3Ref}
                             >
                                 Portfolio
+                            </a>
+                            <span> | </span>
+                            <a
+                                href={null}
+                                ref={Contacts4Ref}
+                            >
+                                425.900.8344
                             </a>
                         </div>
                     </div>

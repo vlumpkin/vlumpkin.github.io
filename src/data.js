@@ -50,6 +50,7 @@ export const resumeContent = [
                 {
                     title: "Learning",
                     skills: [
+                        "React",
                         "Java",
                         "JavaScript",
                         "TypeScript",
@@ -83,6 +84,23 @@ export const resumeContent = [
         details: {
             type: "normal",
             details: [
+                {
+                    title1: "Ignite Robotics Admin Dashboard", 
+                    title2: "Ignite Robotics", 
+                    date1: "In-Progress", 
+                    details: [
+                        "Integrating most/all of Ignite’s software operations into a secure admin platform", 
+                        "Implemented features include roster management and success tracking for the 250 students, payment processing for $500k+ in revenue, an organization messaging platform connected to the student portal, automated parts ordering system, integration of DocuSign and Stripe APIs and more"
+                    ], 
+                    tech: [
+                        "Github", 
+                        "React", 
+                        "JavaScript", 
+                        "HTML/CSS", 
+                        "DocuSign API", 
+                        "Stripe API",
+                    ]
+                },
                 {
                     title1: "Bias Buster News",
                     title2: "Dub Hacks Hackathon",
@@ -264,7 +282,7 @@ export const resumeContent = [
 
 export const resumeBasic = {
     name: 'VERNON LUMPKIN', 
-    email: 'vlumpkin@uw.edu', 
+    email: 'vernonlumpkin@outlook.com', 
     linkedin: 'https://linkedin.com/in/vernonlumpkin/',
     portfolio: 'https://vlumpkin.github.io', 
 }
