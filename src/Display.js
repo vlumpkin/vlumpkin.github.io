@@ -9,7 +9,6 @@ export default function Display(props) {
     if (state === "Resume") {
         return (
             <div className='Display'>
-                <Menu />
                 <Resume />
             </div>
 
