@@ -123,6 +123,7 @@ export const resumeContent = [
                         "Built an interactive dashboard that centralized admission data from colleges’ Common Data Sets (CDS)",
                         "The dataset visualizes 200 measures for the top 60 schools during the 2020-2021 school year for a total of 12,000 observations",
                         "Python scraper used to extract the data from 60 pdfs which was then cleaned and formatted",
+                        "40,000 views on the dashboard over a period of 4 months",
                     ],
                     tech: [
                         "Power BI",
