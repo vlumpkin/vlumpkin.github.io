@@ -71,7 +71,7 @@ export default function ResumeRebuild() {
     const Arrow40Ref = useRef(null);
 
     // Variable responsible for the amount of time between transitions
-    const delay = 300;
+    const delay = 150;
 
     // Step 1: Transition Paper Width and Padding
     useEffect(() => {
@@ -325,7 +325,7 @@ export default function ResumeRebuild() {
                 })
 
                 setTriggerStep(10);
-            }, delay * 4);
+            }, delay * 10);
             return () => clearTimeout(timer);
         }
     }, [triggerStep]);
