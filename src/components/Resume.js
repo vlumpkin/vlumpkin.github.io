@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { resumeBasic, resumeContent } from './data.js'
+import { resumeBasic, resumeContent } from '../data.js'
 
-export default function ResumeRebuild() {
+export default function Resume() {
     const [triggerStep, setTriggerStep] = useState(1);
     const [collapsedSections, setCollapsedSections] = useState({});
 
@@ -70,16 +70,26 @@ export default function ResumeRebuild() {
     const Arrow32Ref = useRef(null);
     const Arrow40Ref = useRef(null);
 
+    const ItemDesc00Ref = useRef(null);
+    const ItemDesc01Ref = useRef(null);
+    const ItemDesc20Ref = useRef(null);
+    const ItemDesc21Ref = useRef(null);
+    const ItemDesc22Ref = useRef(null);
+    const ItemDesc23Ref = useRef(null);
+    const ItemDesc30Ref = useRef(null);
+    const ItemDesc31Ref = useRef(null);
+    const ItemDesc32Ref = useRef(null);
+    const ItemDesc40Ref = useRef(null);
+
     // Variable responsible for the amount of time between transitions
-    const delay = 150;
+    const delay = 120;
 
     // Step 1: Transition Paper Width and Padding
     useEffect(() => {
         if (triggerStep === 1) {
             const timer = setTimeout(() => {
-                PaperRef.current.style.width = `1100px`;
-                PaperRef.current.style.padding = "45px";
-                TopContainerRef.current.style.height = `${41+17+25}px`;
+                PaperRef.current.style.width = `57.29vw`;
+                TopContainerRef.current.style.height = `8vh`;
                 setTriggerStep(2);
             }, delay);
             return () => clearTimeout(timer);
@@ -91,7 +101,7 @@ export default function ResumeRebuild() {
         if (triggerStep === 2) {
             const timer = setTimeout(() => {
 
-                
+
                 PaperNameRef.current.style.width = `100%`;
                 PaperNameRef.current.style.height = `${PaperNameRef.current.scrollHeight}px`;
                 ContactsRef.current.style.width = `100%`;
@@ -306,7 +316,7 @@ export default function ResumeRebuild() {
 
                 visible.forEach(ref => {
                     if (ref.current) {
-                        ref.current.style.overflow = 'visible';
+                        ref.current.style.overflow = 'hidden';
                     }
                 });
 
@@ -320,7 +330,6 @@ export default function ResumeRebuild() {
                 fitContent.forEach(ref => {
                     if (ref.current) {
                         ref.current.style.height = 'fit-content';
-                        console.log('thing');
                     }
                 })
 
@@ -478,6 +487,46 @@ export default function ResumeRebuild() {
         }
     }
 
+    // Helper function to itemDetails() that returns a unique reference for each item's details
+    const getItemDescRef = (index, itemIndex) => {
+        switch (index) {
+            case (0):
+                switch (itemIndex) {
+                    case (0):
+                        return ItemDesc00Ref;
+                    case (1):
+                        return ItemDesc01Ref;
+                }
+            case (2):
+                switch (itemIndex) {
+                    case (0):
+                        return ItemDesc20Ref;
+                    case (1):
+                        return ItemDesc21Ref;
+                    case (2):
+                        return ItemDesc22Ref;
+                    case (3):
+                        return ItemDesc23Ref;
+                }
+            case (3):
+                switch (itemIndex) {
+                    case (0):
+                        return ItemDesc30Ref;
+                    case (1):
+                        return ItemDesc31Ref;
+                    case (2):
+                        return ItemDesc32Ref;
+                }
+            case (4):
+                switch (itemIndex) {
+                    case (0):
+                        return ItemDesc40Ref;
+                }
+            default:
+                console.log(`ARROW REF NOT ASSIGNED`);
+        }
+    }
+
     // Helper function for formattedSection() that returns each section's header
     const header = (title) => {
         return (
@@ -513,10 +562,10 @@ export default function ResumeRebuild() {
             <div
                 className='item-description'
                 style={{
-                    maxHeight: collapsedSections[`${index}_${itemIndex}`] ? `${calculateHeight(item)}px` : '0', // maxHeight set to an arbitrary 900px to make transition work
+                    height: collapsedSections[`${index}_${itemIndex}`] ? `${calculateHeight(index, itemIndex)}px` : '0', // maxHeight set to an arbitrary 900px to make transition work
                     overflow: collapsedSections[`${index}_${itemIndex}`] ? 'visible' : 'hidden',
-                    transition: 'max-height 0.6s ease',
                 }}
+                ref={getItemDescRef(index, itemIndex)}
             >
                 <ul>
                     {item.details.map((subpoint, subIndex) => (
@@ -533,8 +582,8 @@ export default function ResumeRebuild() {
                             {item.tech.join(', ')}
                         </p></li>
                     )}
-                    {item.extra && item.extra}
                 </ul>
+                {item.extra && item.extra}
             </div>
         )
     }
@@ -560,7 +609,7 @@ export default function ResumeRebuild() {
                             {(section.details.type === 'techSkills') && // Technical skills section
                                 section.details.details.map((item, itemIndex) => (
                                     <div className="item" key={itemIndex} ref={getItemRef(index, itemIndex)}>
-                                        <div className="item-title">
+                                        <div className="item-title" style={{marginLeft: `4.36vw`, marginRight: `4.36vw`}}>
                                             <p><b>{item.title}: </b>
                                                 {item.skills.join(', ')}
                                             </p>
@@ -584,68 +633,63 @@ export default function ResumeRebuild() {
     }
 
     // Helper function to calculate height based on content
-    const calculateHeight = (item) => {
-        let baseHeight = 200; // Adjust based on average item size
-        if (item.extra) {
-            baseHeight += 550; // Adjust based on the size of the iframe or additional content
-        }
-        return baseHeight;
+    const calculateHeight = (index, itemIndex) => {
+        const ref = getItemDescRef(index, itemIndex);
+        return ref.current.scrollHeight;
     }
 
     return (
-        <div className='Display'>
+        <div
+            className='paper'
+            ref={PaperRef}
+        >
             <div
-                className='paper'
-                ref={PaperRef}
+                className='paperContent'
+                ref={PaperContentRef}
             >
-                <div
-                    className='paperContent'
-                    ref={PaperContentRef}
-                >
-                    <div className='topContainer'
-                        ref={TopContainerRef}>
-                        <div
-                            className='paperName'
-                            ref={PaperNameRef}
-                        >
-                            {resumeBasic.name}
-                        </div>
-                        <div
-                            className='contacts'
-                            ref={ContactsRef}
-                        >
-                            <a
-                                href={"mailto:" + resumeBasic.email}
-                                ref={Contacts1Ref}
-                            >
-                                {resumeBasic.email}
-                            </a>
-                            <span> | </span>
-                            <a
-                                href={resumeBasic.linkedin}
-                                ref={Contacts2Ref}
-                            >
-                                LinkedIn
-                            </a>
-                            <span> | </span>
-                            <a
-                                href={resumeBasic.portfolio}
-                                ref={Contacts3Ref}
-                            >
-                                Portfolio
-                            </a>
-                            <span> | </span>
-                            <a
-                                href={null}
-                                ref={Contacts4Ref}
-                            >
-                                425.900.8344
-                            </a>
-                        </div>
+                <div className='topContainer'
+                    ref={TopContainerRef}>
+                    <div
+                        className='paperName'
+                        ref={PaperNameRef}
+                    >
+                        {resumeBasic.name}
                     </div>
-                    <div className='bottomContainer' ref={BottomContainerRef}>
-                        {formattedSection()}
+                    <div
+                        className='contacts'
+                        ref={ContactsRef}
+                    >
+                        <a
+                            href={"mailto:" + resumeBasic.email}
+                            ref={Contacts1Ref}
+                        >
+                            {resumeBasic.email}
+                        </a>
+                        <span> | </span>
+                        <a
+                            href={resumeBasic.linkedin}
+                            ref={Contacts2Ref}
+                        >
+                            LinkedIn
+                        </a>
+                        <span> | </span>
+                        <a
+                            href={resumeBasic.portfolio}
+                            ref={Contacts3Ref}
+                        >
+                            Portfolio
+                        </a>
+                        <span> | </span>
+                        <a
+                            href={null}
+                            ref={Contacts4Ref}
+                        >
+                            425.900.8344
+                        </a>
                     </div>
+                </div>
+                <div className='bottomContainer' ref={BottomContainerRef}>
+                    {formattedSection()}
                 </div>
             </div>
         </div>

@@ -156,8 +156,8 @@ export const resumeContent = [
                     ],
                     extra: (
                         <>
-                            <li><p style={{ color: "#199b0f", fontWeight: "bold" }}>The entire dashboard is interactive,
-                                even the graphs, try selecting and unselecting different categories, hold ctrl for multiple!</p></li>
+                            <p style={{ color: "#199b0f", fontWeight: "bold" }}>The entire dashboard is interactive,
+                                even the graphs, try selecting and unselecting different categories, hold ctrl for multiple!</p>
                             <div className="extended-content-container">
                                 <div className="extended-content">
                                     <iframe className="dashboard"

@@ -1,12 +1,12 @@
 :root {
-    --backgroundCol: #DFDCD7;
+    --backgroundCol: #fffaf0;
     --borderCol: rgb(98, 98, 98);
-    --font: Bahnschrift, 'DIN Alternate', sans-serif;
+    --font: 'Gill Sans MT';
     --widthTransition: width 1.2s ease;
     --heightTransition: height 1.2s ease;
 }
 
-* {
+*, *:before, *:after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,6 +17,8 @@ body {
     justify-content: center;
     min-height: 100vh;
     width: 100%;
+    font-size: .85vw;
+    font-family: var(--font);
 }
 
 main {
@@ -25,28 +27,28 @@ main {
     width: 100%;
 }
 
-.Display {
+.display {
     width: 100%;
     height: 100%;
-    padding-top: 25px;
-    padding-bottom: 50px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 
-/**fffaf0 */
-
 .paper {
-    background-color: #fffaf0     ;
+    background-color: var(--backgroundCol);
     display: flex;
     flex-direction: column;
     width: 0;
+    margin-top: 2.6vw;
+    margin-bottom: 2.6vw;
+    padding: 2.34vw 0;
     height: fit-content;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0.52vw rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    margin-bottom: 0px;
     transition: var(--widthTransition), var(--heightTransition);
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .paperContent {
@@ -58,18 +60,18 @@ main {
 }
 
 .topContainer {
-    padding-bottom: 5px;
+    padding-bottom: 0.4vw;
     height: 0;
     transition: var(--heightTransition);
 }
 
 .paperName {
     color: #87B072;
-    font-family: 'Gill Sans MT';
+    font-family: var(--font);
     font-weight: 100;
-    font-size: 36px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    font-size: 2.25em;
+    margin-top: 0.26vw;
+    margin-bottom: 0.52vw;
     text-align: center;
     width: 0;
     height: 0;
@@ -82,10 +84,9 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 0.52vw;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 0.875em;
     width: 0;
     height: auto;
     transition: var(--widthTransition), var(--heightTransition);
@@ -115,7 +116,7 @@ main {
 }
 
 .section {
-    margin-bottom: 8px;
+    margin-bottom: 0.42vw;
     height: fit-content;
     overflow: visible;
     transition: var(--heightTransition);
@@ -127,15 +128,16 @@ main {
     align-content: left;
     width: 100%;
     height: 0;
+    padding: 0  2.34vw;
     transition: height 0.4s ease;
     overflow: hidden;
     text-wrap: nowrap;
 }
 
 .header p {
-    font-family: 'Gill Sans MT';
-    font-size: 15px;
-    letter-spacing: 2px;
+    font-family: var(--font);
+    font-size: 0.9375em;
+    letter-spacing: 0.1vw;
     font-weight: normal;
 }
 
@@ -143,21 +145,19 @@ main {
     flex-grow: 0;
     transition: flex-grow 1.6s ease;
     border: none;
-    height: 1px;
+    height: 0.05vw;
     background-color: #70AD47;
-    margin-left: 13px;
-    margin-top: 9px;
+    margin-left: 0.68vw;
+    margin-top: 0.47vw;
 }
 
 .details {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 15px;
+    font-size: 0.9375em;
     height: 0;
     overflow: hidden;
     transition: var(--heightTransition);
-    margin-left: 45px;
-    padding-top: 3px;
-    margin-right: 45px;
+    padding-top: 0.16vw;
 }
 
 .item {
@@ -171,7 +171,7 @@ main {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding-top: 7px;
+    padding-top: 0.36vw;
 }
 
 .date {
@@ -179,34 +179,36 @@ main {
 }
 
 .item-description {
-    padding-top: 5.5px;
-    margin-left: 20px;
-    letter-spacing: -.3px;
-    overflow: hidden;
+    height: 0;
+    padding-top: 0.29vw;
+    padding-left: 5.4vw;
+    padding-right: 5.4vw;
+    letter-spacing: -0.016vw;
+    transition: height 0.8s ease;
 }
 
 .item-description ul {
     list-style-type: disc;
-    margin-left: 20px;
+    margin-left: 1.04vw;
     text-wrap: pretty;
     overflow: visible;
 }
 
 .item-description li {
-    padding-bottom: 3px;
-    padding-top: 2px;
+    padding-bottom: 0.16vw;
+    padding-top: 0.1vw;
 }
 
 .item-description p {
-    margin-left: 5px;
-    line-height: 21px;
+    margin-left: 0.26vw;
+    line-height: 1.09vw;
 }
 
 button.collapsible {
     background: none;
     border: none;
     text-align: left;
-    width: 100%;
+    width: 47.93vw;
     cursor: pointer;
     outline: none;
     display: flex;
@@ -214,33 +216,37 @@ button.collapsible {
     font-family: inherit;
     font-size: inherit;
     color: inherit;
+    box-sizing: content-box;
+    margin-left: 4.68vw;
+    margin-right: 4.68vw;
 }
 
 .button_arrow {
-    font-size: 18px;
+    font-size: 1.125em;
     font-weight: bold;
     float: left;
-    margin-top: 6px;
-    margin-left: 15px;
+    margin-top: 0.31vw;
+    margin-left: 0.78vw;
     height: 0;
-    transition: height 1.8s ease; 
+    transition: height 1.8s ease;
     display: flex;
-    align-items: center; 
+    align-items: center;
     overflow: hidden;
 }
 
 .skills {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 0.26vw;
 }
 
 .extended-content-container {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 0.52vw;
+    margin-bottom: 0.52vw;
     width: 100%;
-    margin-left: -20px;
     display: flex;
     justify-content: center;
+    overflow-x: visible;
+    overflow-y: visible;
 }
 
 .extended-content {
@@ -255,12 +261,12 @@ button.collapsible {
 }
 
 .dashboard {
-    width: 1050px;
-    height: 560.25px;
+    width: 54.69vw;
+    height: 29.18vw;
     align-items: center;
     border-color: #000;
-    border-radius: 15px;
-    box-shadow: 0px 2px 5px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 0.78vw;
+    box-shadow: 0 0.1vw 0.26vw 0.21vw rgba(0, 0, 0, 0.3);
 }
 
 .thumbnail {
@@ -272,46 +278,153 @@ button.collapsible {
 .thumbnail img {
     width: 180px;
     height: 110px;
-    border-radius: 10px;
+    border-radius: 0.52vw;
     border-color: #9a1010;
-    border-width: 3px;
-    box-shadow: 0px 2px 5px 4px rgba(0, 0, 0, 0.3);
-    margin-top: 5px;
-    margin-bottom: 10px;
+    border-width: 0.16vw;
+    box-shadow: 0px 0.1vw 0.26vw 4px rgba(0, 0, 0, 0.3);
+    margin-top: 0.26vw;
+    margin-bottom: 0.52vw;
 }
 
 .thumbnail p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     color: #000;
-    font-size: 16px;
+    font-size: 1em;
     width: 160px;
-    margin-left: 10px;
-    text-wrap:pretty;
+    margin-left: 0.52vw;
+    text-wrap: pretty;
 }
 
 .links {
-    margin-top: 5px;
+    margin-top: 0.26vw;
     display: flex;
     flex-direction: row;
 }
 
 /** Menu */
 
-.Menu {
-    max-width: 1200px;
-    width: 100%;
-    height: 0px;
-    padding: 16px 32px;
+.menuContainer {
+    height: 80%;
+    width: fit-content;
+    position: fixed;
+    left: 0;
+    top: 0;
     display: flex;
     align-items: center;
-    background-color: white;
-    justify-content: space-between;
-    border-radius: 16px;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-    position: fixed;
-    top: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
+    justify-content: center;
+}
+
+.menu {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menuTab {
+    background-color: var(--backgroundCol);
+    width: 0vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-left: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+    font-family: var(--font);
+    box-sizing: content-box;
+    transition: width 1.2s ease;
+}
+
+.menuTab p {
+    padding: 11px 0 11px 10px
+}
+
+.menuTab:hover {
+    cursor: pointer;
+}
+
+.menuTabFlag {
+    height: 0;
+    width: .5vw;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 90%, 0% 100%, 0% 0%);
+    margin: 0 .3vw 0 0.4vw;
+    box-shadow: 10px 10px rgba(0, 0, 0, 1);
+    flex-shrink: 0;
+    background-color: #a31818;
+    transition: height 0.8s ease;
+}
+
+.menu img {
+    width: 10vw;
+    border-radius: 18px;
+    border-style: solid;
+    border-width: 3px;
+    box-shadow: 0.2vw 0.2vw 2vw rgba(0, 0, 0, 0.7)
+}
+
+/** Resume Editor */
+
+.resumeEditor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+/* Base styles for the toggle switch */
+.toggle-switch {
+    display: none;
+}
+
+.toggle-switch + label {
+    transition: .3s background;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    height: 2em;
+    width: 4em;
+    background: #ECECEC; /* Light grey */
+    border-radius: 20em;
+    vertical-align: middle;
+}
+
+.toggle-switch + label:before,
+.toggle-switch + label:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.toggle-switch + label:before {
+    transition: .3s left;
+    content: '';
+    display: inline-block;
+    background: rgba(0, 0, 0, .5);
+    height: 1.5em;
+    width: 1.5em;
+    margin: .25em;
+    border-radius: 50%;
+    z-index: 200;
+}
+
+.toggle-switch + label:after {
+    color: #fff;
+    font: 1.25em 'FontAwesome';
+    top: 50%;
+    margin-top: -.5em;
+    left: 2em;
+}
+
+.toggle-switch:checked + label {
+    background: #87B072; /* Blue */
+}
+
+.toggle-switch:checked + label:before {
+    left: 2em;
+}
+
+.toggle-switch:checked + label:after {
+    left: .5em;
 }
