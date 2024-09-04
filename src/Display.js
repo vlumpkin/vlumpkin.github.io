@@ -1,12 +1,14 @@
 import React from 'react';
 import Menu from './components/Menu.js';
 import About from './components/About.js';
+import Resume from './Components/Resume.js';
 import ResumeApp from './ResumeApp.js';
+import { vResumeContent } from './data.js';
 
 import MovingBar from './testing/MovingBar.js';
 
 export default function Display(props) {
-    const { state, setState } = props;
+    const { state, setState, formData, setFormData } = props;
     let code;
 
     switch (state) {
@@ -19,19 +21,28 @@ export default function Display(props) {
             break;
         case ("Resume"):
             code = (
-                <ResumeApp />
+                <Resume 
+                    editing={false}
+                    source={vResumeContent}
+                />
             );
             break;
-        case ("Portfolio"):
+        case ("Resume Builder"):
             code = (
-                <p style={{ marginTop: '40vh', fontSize: '1.3em' }}>i might make this, might not</p>
-            );
+                <ResumeApp 
+                        formData={formData}
+                        setFormData={setFormData}
+                    />
+            )
             break;
         case ("Testing..."):
             code = (
                 <>
                     <MovingBar />
-                    <ResumeApp />
+                    <ResumeApp 
+                        formData={formData}
+                        setFormData={setFormData}
+                    />
                     <MovingBar />
                 </>
             );

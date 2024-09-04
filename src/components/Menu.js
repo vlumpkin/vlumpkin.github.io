@@ -17,7 +17,7 @@ export default function Menu(props) {
     const pages = [
         "About",
         "Resume",
-        "Portfolio",
+        "Resume Builder",
     ]
 
     const delay = 800;
@@ -29,7 +29,7 @@ export default function Menu(props) {
                 pages.forEach((page, index) => {
                     setTimeout(() => {
                         const ref = getPageRef(page.toUpperCase());
-                        ref.current.style.width = `6vw`;
+                        ref.current.style.width = `8vw`;
                     }, subDelay * index)
                 })
                 setStep(2);
@@ -69,7 +69,7 @@ export default function Menu(props) {
                 return page1Ref;
             case ("RESUME"):
                 return page2Ref;
-            case ("PORTFOLIO"):
+            case ("RESUME BUILDER"):
                 return page3Ref;
             case ("TESTING..."):
                 return page4Ref;
@@ -84,7 +84,7 @@ export default function Menu(props) {
                 return tab1Ref;
             case ("RESUME"):
                 return tab2Ref;
-            case ("PORTFOLIO"):
+            case ("RESUME BUILDER"):
                 return tab3Ref;
             case ("TESTING..."):
                 return tab4Ref;
