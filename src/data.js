@@ -44,6 +44,18 @@ export const vResumeContent = {
             ,
         },
         {
+            title: "Resume Builder",
+            organization: "Personal Project",
+            date1: "September 2024",
+            details:
+                "Developed interactive no-code resume generator based on my own digital resume\n" +
+                "Dynamically generate elements and element references to replicate transitions and structure\n" +
+                'Click the *Resume Builder* tab to try it out!\n' + 
+                "\"Technologies Used:\" Github, React, JavaScript, HTML/CSS\n"
+            ,
+            
+        },
+        {
             title: "Bias Buster News",
             organization: "Dub Hacks Hackathon",
             date1: "October 2023",

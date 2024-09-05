@@ -63,8 +63,6 @@ export default function Resume(props) {
         sectionDetailsRefs.current = [];
         sectionItemRefs.current = [];
 
-        console.log('count');
-
         sections.forEach((section, index) => {
             const valid = section.details.length > 0;
             if (valid) {
@@ -119,8 +117,12 @@ export default function Resume(props) {
     useEffect(() => {
         if (!editing && triggerStep === 1) {
             const timer = setTimeout(() => {
-                PaperRef.current.style.width = `57.29vw`;
-                TopContainerRef.current.style.height = `8vh`;
+                if(PaperRef && PaperRef.current) {
+                    PaperRef.current.style.width = `57.29vw`;
+                }
+                if(TopContainerRef && TopContainerRef.current) {
+                    TopContainerRef.current.style.height = `8vh`;
+                }
                 setTriggerStep(2);
             }, delay);
             return () => clearTimeout(timer);
@@ -132,12 +134,12 @@ export default function Resume(props) {
         if (!editing && triggerStep === 2) {
             const timer = setTimeout(() => {
 
-                if (PaperNameRef.current) {
+                if (PaperNameRef && PaperNameRef.current) {
                     PaperNameRef.current.style.width = `100%`;
                     PaperNameRef.current.style.height = `${PaperNameRef.current.scrollHeight}px`;
                 }
 
-                if (ContactsRef.current) {
+                if (ContactsRef && ContactsRef.current) {
                     ContactsRef.current.style.width = `100%`;
                 }
 
@@ -153,7 +155,7 @@ export default function Resume(props) {
             const timer = setTimeout(() => {
 
                 contactRefs.current.forEach(ref => {
-                    if (ref) {
+                    if (ref && ref.current) {
                         const contactWidth = ref.current.scrollWidth;
                         ref.current.style.width = `${contactWidth}px`
                     }
@@ -172,7 +174,7 @@ export default function Resume(props) {
                 const subDelay = 100;
                 sectionHeaderRefs.current.forEach((ref, index) => {
                     setTimeout(() => {
-                        if (ref) {
+                        if (ref && ref.current) {
                             ref.current.style.height = `${ref.current.scrollHeight}px`;
                         }
                     }, subDelay * index);
@@ -192,7 +194,7 @@ export default function Resume(props) {
 
                 sectionHRRefs.current.forEach((ref, index) => {
                     setTimeout(() => {
-                        if (ref) {
+                        if (ref && ref.current) {
                             ref.current.style.flexGrow = '1';
                         }
                     }, subDelay * index)
@@ -212,7 +214,7 @@ export default function Resume(props) {
 
                 sectionDetailsRefs.current.forEach((ref, index) => {
                     setTimeout(() => {
-                        if (ref) {
+                        if (ref && ref.current) {
                             const detailsHeight = ref.current.scrollHeight;
                             ref.current.style.height = `${detailsHeight}px`;
                         }
@@ -240,7 +242,7 @@ export default function Resume(props) {
                                 const ref = itemArray[0];  // Item ref (the first one)
 
                                 setTimeout(() => {
-                                    if (ref.current) {
+                                    if (ref && ref.current) {
                                         ref.current.style.width = '100%';  // Apply the width style
                                     }
                                 }, subDelay * count);  // Delay based on the counter
@@ -271,7 +273,7 @@ export default function Resume(props) {
                                 const ref = itemArray[1];  // Item ref (the first one)
 
                                 setTimeout(() => {
-                                    if (ref.current) {
+                                    if (ref && ref.current) {
                                         const arrowHeight = ref.current.scrollHeight;
                                         ref.current.style.height = `${arrowHeight}px`;
                                     }

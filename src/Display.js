@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Menu from './components/Menu.js';
 import About from './components/About.js';
-import Resume from './Components/Resume.js';
+import Resume from './Components/Resume.js'; // Fixed path
 import ResumeApp from './ResumeApp.js';
 import { vResumeContent } from './data.js';
-
 import MovingBar from './testing/MovingBar.js';
 
 export default function Display(props) {
@@ -12,38 +11,39 @@ export default function Display(props) {
     let code;
 
     switch (state) {
-        case ("About"):
+        case "About":
             code = (
-                <>
-                    <About />
-                </>
+                <About />
             );
             break;
-        case ("Resume"):
+        case "Resume":
             code = (
-                <Resume 
+                <Resume
                     editing={false}
                     source={vResumeContent}
+                    state={state}
                 />
             );
             break;
-        case ("Resume Builder"):
+        case "Resume Builder":
             code = (
-                <ResumeApp 
-                        formData={formData}
-                        setFormData={setFormData}
-                    />
-            )
+                <ResumeApp
+                    formData={formData}
+                    setFormData={setFormData}
+                    state={state}
+                />
+            );
             break;
-        case ("Testing..."):
+        case "Testing...":
             code = (
                 <>
-                    <MovingBar />
-                    <ResumeApp 
+                    <MovingBar key="bar-top" />
+                    <ResumeApp
                         formData={formData}
                         setFormData={setFormData}
+                        state={state}
                     />
-                    <MovingBar />
+                    <MovingBar key="bar-bottom" />
                 </>
             );
             break;
@@ -62,5 +62,5 @@ export default function Display(props) {
             />
             {code}
         </div>
-    )
+    );
 }

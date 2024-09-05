@@ -3,7 +3,7 @@ import Resume from './Components/Resume.js';
 import ResumeForm from './components/ResumeForm.js';
 
 export default function ResumeApp(props) {
-    const { formData, setFormData } = props;
+    const { formData, setFormData, state } = props;
     const [editing, setEditing] = useState(false);
 
     return (
@@ -19,7 +19,7 @@ export default function ResumeApp(props) {
             {editing ? (
                 <ResumeForm formData={formData} setFormData={setFormData} />
             ) : (
-                <Resume editing={editing} source={formData} />
+                <Resume editing={editing} source={formData} state={state} />
             )}
         </div>
     )
