@@ -20,10 +20,13 @@ export default function ResumeForm({ formData, setFormData }) {
             {volunteerism(formData, setFormData)}
             {resumeFormHeader("Interpersonal Skills")}
             {interpersonalSkills(formData, setFormData)}
+            {resumeFormHeader("JSON OBJECT")}
+            {resumeInfoButton(setFormData)}
         </div>
     )
 }
 
+// Returns section headers
 function resumeFormHeader(text) {
     return (
         <div className='resumeFormHeader'>
@@ -33,9 +36,11 @@ function resumeFormHeader(text) {
     )
 }
 
+// Returns the input elements for personal info
 function personalInfo(formData, setFormData) {
+
     // Function to handle changes in the input fields
-    function handlePersonalInfoChange(field, value) {
+    function handleChange(field, value) {
         setFormData(prevState => ({
             ...prevState,
             personalInfo: {
@@ -54,7 +59,7 @@ function personalInfo(formData, setFormData) {
                         <input
                             className='singleLine'
                             placeholder='Vernon'
-                            onChange={e => handlePersonalInfoChange("firstName", e.target.value)}
+                            onChange={e => handleChange("firstName", e.target.value)}
                             value={formData.personalInfo.firstName}
                         />
                     </div>
@@ -63,7 +68,7 @@ function personalInfo(formData, setFormData) {
                         <input
                             className='singleLine'
                             placeholder='Lumpkin'
-                            onChange={e => handlePersonalInfoChange("lastName", e.target.value)}
+                            onChange={e => handleChange("lastName", e.target.value)}
                             value={formData.personalInfo.lastName}
                         />
                     </div>
@@ -74,7 +79,7 @@ function personalInfo(formData, setFormData) {
                         <input
                             className='singleLine'
                             placeholder='Email'
-                            onChange={e => handlePersonalInfoChange("email", e.target.value)}
+                            onChange={e => handleChange("email", e.target.value)}
                             value={formData.personalInfo.email}
                         />
                     </div>
@@ -83,7 +88,7 @@ function personalInfo(formData, setFormData) {
                         <input
                             className='singleLine'
                             placeholder='Phone Number'
-                            onChange={e => handlePersonalInfoChange("phone", e.target.value)}
+                            onChange={e => handleChange("phone", e.target.value)}
                             value={formData.personalInfo.phone}
                         />
                     </div>
@@ -94,7 +99,7 @@ function personalInfo(formData, setFormData) {
                         <input
                             className='singleLine'
                             placeholder='linkedin.com/in/vernonlumpkin/'
-                            onChange={e => handlePersonalInfoChange("linkedin", e.target.value)}
+                            onChange={e => handleChange("linkedin", e.target.value)}
                             value={formData.personalInfo.linkedin}
                         />
                     </div>
@@ -103,7 +108,7 @@ function personalInfo(formData, setFormData) {
                         <input
                             className='singleLine'
                             placeholder='vlumpkin.github.io'
-                            onChange={e => handlePersonalInfoChange("portfolio", e.target.value)}
+                            onChange={e => handleChange("portfolio", e.target.value)}
                             value={formData.personalInfo.portfolio}
                         />
                     </div>
@@ -113,6 +118,7 @@ function personalInfo(formData, setFormData) {
     )
 }
 
+// Returns the input elements for education entries
 function education(formData, setFormData) {
 
     // Function to handle adding a new education entry
@@ -251,7 +257,10 @@ function education(formData, setFormData) {
     );
 }
 
+// Returns the input element for technical skills
 function technicalSkills(formData, setFormData) {
+
+    // Function to handle changes in the input field
     function handleChange(value) {
         setFormData(prevState => ({
             ...prevState,
@@ -279,7 +288,10 @@ function technicalSkills(formData, setFormData) {
     )
 }
 
+// Returns the input elements for project entries
 function projects(formData, setFormData) {
+
+    // Funciton to handle adding a new project entry
     function addEntry() {
         const newEntries = [...formData.projectEntries, { title: '', organization: '', date1: '', details: '', code: '' }];
         setFormData(prevState => ({
@@ -288,6 +300,7 @@ function projects(formData, setFormData) {
         }))
     }
 
+    // Funciton to handle removing an project entry
     function removeEntry(index) {
         const newEntries = formData.projectEntries.filter((_, i) => i !== index);
         setFormData(prevState => ({
@@ -296,6 +309,7 @@ function projects(formData, setFormData) {
         }));
     }
 
+    // Function to handle changes in the input fields
     function handleChange(index, field, value) {
         const newEntries = [...formData.projectEntries];
         newEntries[index][field] = value;
@@ -388,7 +402,10 @@ allowFullScreen='true' style='border: none; width: 54.69vw; height: 29.18vw; ali
     )
 }
 
+// Returns the input elements for experience entries
 function experience(formData, setFormData) {
+
+    // Funciton to handle adding a new experience entry
     function addEntry() {
         const newEntries = [...formData.experienceEntries, { organization: '', position: '', date1: '', date2: '', details: '', code: '' }];
         setFormData(prevState => ({
@@ -397,6 +414,7 @@ function experience(formData, setFormData) {
         }))
     }
 
+    // Funciton to handle removing a experience entry
     function removeEntry(index) {
         const newEntries = formData.experienceEntries.filter((_, i) => i !== index);
         setFormData(prevState => ({
@@ -405,6 +423,7 @@ function experience(formData, setFormData) {
         }));
     }
 
+    // Funciton to handle changes in the input fields
     function handleChange(index, field, value) {
         const newEntries = [...formData.experienceEntries];
         newEntries[index][field] = value;
@@ -506,7 +525,10 @@ allowFullScreen='true' style='border: none; width: 54.69vw; height: 29.18vw; ali
     )
 }
 
+// Returns the input elements for activity entries
 function activities(formData, setFormData) {
+    
+    // Funciton to handle adding a new activity entry
     function addEntry() {
         const newEntries = [...formData.activityEntries, { organization: '', position: '', date1: '', date2: '', details: '', code: '' }];
         setFormData(prevState => ({
@@ -515,6 +537,7 @@ function activities(formData, setFormData) {
         }))
     }
 
+    // Funciton to handle removing an activity entry
     function removeEntry(index) {
         const newEntries = formData.activityEntries.filter((_, i) => i !== index);
         setFormData(prevState => ({
@@ -523,6 +546,7 @@ function activities(formData, setFormData) {
         }));
     }
 
+    // Funciton to handle changes in the input fields
     function handleChange(index, field, value) {
         const newEntries = [...formData.activityEntries];
         newEntries[index][field] = value;
@@ -624,7 +648,9 @@ allowFullScreen='true' style='border: none; width: 54.69vw; height: 29.18vw; ali
     )
 }
 
+// Returns the input elements for volunteer entries
 function volunteerism(formData, setFormData) {
+    // Funciton to handle adding a new volunteer entry
     function addEntry() {
         const newEntries = [...formData.volunteerEntries, { organization: '', position: '', date1: '', date2: '', details: '', code: '' }];
         setFormData(prevState => ({
@@ -633,6 +659,7 @@ function volunteerism(formData, setFormData) {
         }))
     }
 
+    // Funciton to handle removing a volunteer entry
     function removeEntry(index) {
         const newEntries = formData.volunteerEntries.filter((_, i) => i !== index);
         setFormData(prevState => ({
@@ -641,6 +668,7 @@ function volunteerism(formData, setFormData) {
         }));
     }
 
+    // Funciton to handle changes in the input fields
     function handleChange(index, field, value) {
         const newEntries = [...formData.volunteerEntries];
         newEntries[index][field] = value;
@@ -742,7 +770,9 @@ allowFullScreen='true' style='border: none; width: 54.69vw; height: 29.18vw; ali
     )
 }
 
+// Returns the input element for interpersonal skills
 function interpersonalSkills(formData, setFormData) {
+    // Funciton to handle changes in the field
     function handleChange(value) {
         setFormData(prevState => ({
             ...prevState,
@@ -766,5 +796,34 @@ function interpersonalSkills(formData, setFormData) {
                 </div>
             </div>
         </div>
+    )
+}
+
+// Returns the input element for resume JSON Objects
+function resumeInfoButton(setFormData) {
+    // Funciton to handle changes in the input field
+    function handleChange(value) {
+        if (value) {
+            setFormData(JSON.parse(value));
+        }
+    }
+
+    return (
+
+        <div className='resumeFormSectionDetails'>
+            <div className='resumeFormSectionDetailsEntry'>
+                <div className='resumeFormDetails'>
+                    <p>
+                        If you have built and saved a previous resume's JSON, you can paste it here!
+                    </p>
+                    <textarea
+                        className='details'
+                        placeholder='JSON Object'
+                        onChange={e => handleChange(e.target.value)}
+                    />
+                </div>
+            </div>
+        </div>
+
     )
 }

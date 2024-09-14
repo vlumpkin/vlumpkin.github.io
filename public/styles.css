@@ -145,7 +145,7 @@ main {
     flex-grow: 0;
     transition: flex-grow 1.6s ease;
     border: none;
-    height: 0.05vw;
+    height: 1px;
     background-color: #70AD47;
     margin-left: 0.68vw;
     margin-top: 0.47vw;
@@ -564,4 +564,14 @@ button.resumeFormAddButton {
     font-family: var(--font);
     margin: 0 15px;
     margin-top: -1vh;
+}
+
+.resumeJsonButton {
+    font-size: 12px;
+    background-color: var(--backgroundCol);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+    padding: 3px;
+    font-family: var(--font);
+    box-sizing: content-box;
+    margin-bottom: 15px;
 }

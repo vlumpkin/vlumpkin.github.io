@@ -4,6 +4,7 @@ export default function Resume(props) {
     const { editing, source } = props;
     const [triggerStep, setTriggerStep] = useState(1);
     const [collapsedSections, setCollapsedSections] = useState({});
+    const [ showJson, setShowJson ] = useState(false);
 
     const { firstName, lastName, email, phone, linkedin, portfolio } = source.personalInfo;
     const sections = [
@@ -50,7 +51,7 @@ export default function Resume(props) {
     const BottomContainerRef = useRef(null);
     const PaperNameRef = useRef(null);
     const ContactsRef = useRef(null);
-    
+
     const contactRefs = useRef([]);
     const sectionHeaderRefs = useRef([]);
     const sectionHRRefs = useRef([]);
@@ -99,9 +100,9 @@ export default function Resume(props) {
     useEffect(() => {
         contactRefs.current = [];
         const contacts = [
-            email, 
-            linkedin, 
-            portfolio, 
+            email,
+            linkedin,
+            portfolio,
             phone,
         ]
 
@@ -117,10 +118,10 @@ export default function Resume(props) {
     useEffect(() => {
         if (!editing && triggerStep === 1) {
             const timer = setTimeout(() => {
-                if(PaperRef && PaperRef.current) {
+                if (PaperRef && PaperRef.current) {
                     PaperRef.current.style.width = `57.29vw`;
                 }
-                if(TopContainerRef && TopContainerRef.current) {
+                if (TopContainerRef && TopContainerRef.current) {
                     TopContainerRef.current.style.height = `8vh`;
                 }
                 setTriggerStep(2);
@@ -679,23 +680,43 @@ export default function Resume(props) {
         )
     }
 
+    const resumeData = () => {
+        return (
+            <>
+                <button 
+                    className='resumeJsonButton'
+                    onClick={() => setShowJson(!showJson)}
+                >
+                    {showJson ? "Hide" : 'See'} Resume JSON
+                </button>
+                <div style={{ width: '57.29vw' }}>
+                    {showJson ? JSON.stringify(source) : null}
+                </div>
+            </>
+        )
+    }
+
     return (
-        <div
-            className='paper'
-            ref={PaperRef}
-        >
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div
-                className='paperContent'
-                ref={PaperContentRef}
+                className='paper'
+                ref={PaperRef}
             >
-                <div className='topContainer'
-                    ref={TopContainerRef}>
-                    {contacts()}
+                <div
+                    className='paperContent'
+                    ref={PaperContentRef}
+                >
+                    <div className='topContainer'
+                        ref={TopContainerRef}>
+                        {contacts()}
+                    </div>
+                    <div className='bottomContainer' ref={BottomContainerRef}>
+                        {formattedSection()}
+                    </div>
                 </div>
-                <div className='bottomContainer' ref={BottomContainerRef}>
-                    {formattedSection()}
-                </div>
+
             </div>
+            {resumeData()}
         </div>
     );
 }
