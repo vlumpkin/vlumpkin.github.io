@@ -140,7 +140,8 @@ export const vResumeContent = {
             date1: "May 2024",
             date2: "July 2024",
             details:
-                "Employed 5 million event observations to discern factors that impact conversion rate and other valuable insights\n" +
+                "Headed MathGPT's data analysis efforts to increase user retention, usage, and conversion rate\n" + 
+                "Employed 5 million event observations to discern factors that impact conversion rate and other valuable insights\n" + 
                 "Implemented UX decisions for 350k users with TypeScript and A/B testing, improved conversion rate by 43%\n"
             ,
             code:

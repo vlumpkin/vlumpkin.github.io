@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import Display from './Display.js';
 
 export default function App() {
-    const [ state, setState ] = useState("Resume Builder");
+    const [state, setState] = useState("Resume");
     const [formData, setFormData] = useState({
         personalInfo: {
-            firstName: 'Toggle the slider to edit!', 
-            lastName: '', 
+            firstName: 'Toggle the slider to edit!',
+            lastName: '',
             email: '',
             phone: '',
             linkedin: '',
             portfolio: '',
         },
-        educationEntries: [], 
+        educationEntries: [],
         technicalSkills: '',
-        projectEntries: [], 
+        projectEntries: [],
         experienceEntries: [],
         activityEntries: [],
         volunteerEntries: [],
@@ -22,7 +22,7 @@ export default function App() {
     });
 
     return (
-        <Display 
+        <Display
             state={state}
             setState={setState}
             formData={formData}
