@@ -166,16 +166,6 @@ export const vResumeContent = {
             ,
         },
         {
-            organization: "City of Kirkland",
-            position: "Climate Justice Intern",
-            date1: "April 2022",
-            date2: "September 2023",
-            details:
-                "Collaborated with councilmembers to further the impact of the Sustainability Master Plan (SMP)\n" +
-                "Built out a Power BI dashboard to visualize the SMP\n"
-            ,
-        },
-        {
             organization: "Starbucks",
             position: "Barista",
             date1: "July 2023",
