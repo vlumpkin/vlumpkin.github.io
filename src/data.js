@@ -113,7 +113,7 @@ export const vResumeContent = {
             date1: "October 2021",
             date2: "Present",
             details:
-                "Managed Financials ($450k in revenue), budget forecasts, and fundraising (secured $30k in funding)\n" +
+                "Managed Financials ($550k in revenue), budget forecasts, and fundraising (secured $50k in funding)\n" +
                 "Partnered with Microsoft to host the first PNW Vex Signature event, bringing together 150 teams, 300 volunteers, and 2,000 attendees from around North America to compete\n" +
                 "Partnered with Google to host GirlPowered and co-sponsored financial scholarships with CIE\n"
             ,
@@ -159,20 +159,58 @@ export const vResumeContent = {
             organization: "City of Kirkland",
             position: "Climate Justice Intern",
             date1: "April 2022",
-            date2: "April 2023",
+            date2: "September 2023",
             details:
                 "Collaborated with councilmembers to further the impact of the Sustainability Master Plan (SMP)\n" +
                 "Built out a Power BI dashboard to visualize the SMP\n"
+            ,
+        },
+        {
+            organization: "City of Kirkland",
+            position: "Climate Justice Intern",
+            date1: "April 2022",
+            date2: "September 2023",
+            details:
+                "Collaborated with councilmembers to further the impact of the Sustainability Master Plan (SMP)\n" +
+                "Built out a Power BI dashboard to visualize the SMP\n"
+            ,
+        },
+        {
+            organization: "Starbucks",
+            position: "Barista",
+            date1: "July 2023",
+            date2: "September 2023",
+            details:
+                "Making coffee!\n"
+            ,
+        },
+        {
+            organization: "ACE Hardware",
+            position: "General Associate",
+            date1: "July 2021",
+            date2: "October 2021",
+            details:
+                "Serving customers!\n"
+            ,
+        },
+        {
+            organization: "Dunn Lumber",
+            position: "General Associate",
+            date1: "June 2021",
+            date2: "July 2021",
+            details:
+                "Lifting heavy wood while getting a tan!\n"
             ,
         },
     ],
     activityEntries: [
         {
             organization: "UW Computer Science Student Advisory Council",
-            position: "Director of Community Engagement",
+            position: "Chair",
             date1: "October 2023",
             date2: "Present",
             details:
+                "Work directly with the Dean, Director, and Vice Director in maintain/developing the success of the Allen School\n" +
                 "Collaborate with faculty to review and develop curriculum and class policies to ensure an effective and equitable learning environment\n" +
                 "Represent student voice by hosting town halls, connecting with students, and managing online resources\n"
             ,
