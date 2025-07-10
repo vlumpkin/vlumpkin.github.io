@@ -18,7 +18,7 @@ export const vResumeContent = {
             date2: "2027",
             details:
                 "*Direct Admission:* Paul G. Allen School of Computer Science, Dean's List \n" +
-                "*Activities:* Student Advisory Council (CSE), Club Soccer, Soccer Club, Fraternity: Pi Kappa Phi, Dean's List\n"
+                "*Activities:* Student Advisory Council (CSE) Chair, Club Soccer Co-Captain, Soccer Club, Fraternity: Pi Kappa Phi, Dean's List\n"
         },
         {
             school: "Lake Washington High School",
@@ -34,12 +34,24 @@ export const vResumeContent = {
         "*Development Tools:* Git, GitHub, GitLab, VSCode, jGrasp, Bash, PowerShell, PowerBI\n",
     projectEntries: [
         {
+            title: "STF Grant Dashboard", 
+            organization: "University of Washington's Student Technology Fee", 
+            date1: "March 2025", 
+            date2: "June 2025",
+            details:
+                "Fetch date-input constrained data through submittable API \n" +
+                "Optimized performance via dynamic parsing: questions, forms, labels, submissions, reviews \n" +
+                "Leverages pre-built XLSM file to generate final report with injected dynamic VBA \n" +
+                "\"Technologies Used:\" Github, JavaScript, Python, Submittable API, VBA \n"
+            ,
+        },
+        {
             title: "Ignite Robotics Admin Dashboard",
             organization: "Ignite Robotics",
             date1: "In-Progress",
             details:
-                "Integrating most/all of Ignite’s software operations into a secure admin platform\n" +
-                "Implemented features include roster management and success tracking for the 250 students, payment processing for $500k+ in revenue, an organization messaging platform connected to the student portal, automated parts ordering system, integration of DocuSign and Stripe APIs and more\n" +
+                "Integrating all of Ignite’s software operations into a secure admin platform\n" +
+                "Implemented features include roster management, success tracking for the 250 students, payment processing for $500k+ in revenue, org messaging platform, automated parts ordering system\n" +
                 "\"Technologies Used:\" Github, React, JavaScript, HTML/CSS, DocuSign API, Stripe API\n"
             ,
         },
