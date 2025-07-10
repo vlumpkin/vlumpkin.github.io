@@ -36,7 +36,7 @@ export const vResumeContent = {
         {
             title: "STF Grant Dashboard", 
             organization: "University of Washington's Student Technology Fee", 
-            date1: "March 2025", 
+            date1: "April 2025", 
             date2: "June 2025",
             details:
                 "Fetch date-input constrained data through submittable API \n" +
@@ -120,6 +120,13 @@ export const vResumeContent = {
     ],
     experienceEntries: [
         {
+            organization: "Amazon",
+            position: "Jr. Software Developer",
+            date1: "June 2025",
+            date2: "Present",
+            details: "Selection Gap Monitoring (OASIS) \n",
+        },
+        {
             organization: "Ignite Robotics",
             position: "Independent Contractor, ex. Managing Director",
             date1: "October 2021",
@@ -145,6 +152,20 @@ export const vResumeContent = {
                 "</div>" +
                 "</div>"
             ,
+        },
+        {
+            organization: "University of Washington",
+            position: "Independent Consultant - Student Technology Fee (STF)",
+            date1: "April 2025",
+            date2: "June 2025",
+            details: "Contracted to automate their grant-approval system (overseeing $10M) via an intake rubric, low-level data transformation/formatting, and visualization templates \n",
+        },
+        {
+            organization: "NO 2117",
+            position: "Youth Advocate",
+            date1: "May 2024",
+            date2: "November 2024",
+            details: "Personally recruited by Washington's Governor Inslee to campaign against I-2117 \n",
         },
         {
             organization: "MathGPT",
@@ -183,7 +204,7 @@ export const vResumeContent = {
             date1: "July 2023",
             date2: "September 2023",
             details:
-                "Making coffee!\n"
+                "Thought this would work better than dating apps\n"
             ,
         },
         {
@@ -192,7 +213,7 @@ export const vResumeContent = {
             date1: "July 2021",
             date2: "October 2021",
             details:
-                "Serving customers!\n"
+                "Getting in touch with hardware before I become a pro in software \n"
             ,
         },
         {
@@ -201,7 +222,7 @@ export const vResumeContent = {
             date1: "June 2021",
             date2: "July 2021",
             details:
-                "Lifting heavy wood while getting a tan!\n"
+                "Lifting heavy wood with cool old dudes\n"
             ,
         },
     ],
