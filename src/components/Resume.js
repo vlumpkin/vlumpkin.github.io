@@ -119,7 +119,7 @@ export default function Resume(props) {
         if (!editing && triggerStep === 1) {
             const timer = setTimeout(() => {
                 if (PaperRef && PaperRef.current) {
-                    PaperRef.current.style.width = `57.29vw`;
+                    PaperRef.current.style.width = `80rem`;
                 }
                 if (TopContainerRef && TopContainerRef.current) {
                     TopContainerRef.current.style.height = `8vh`;
@@ -176,7 +176,7 @@ export default function Resume(props) {
                 sectionHeaderRefs.current.forEach((ref, index) => {
                     setTimeout(() => {
                         if (ref && ref.current) {
-                            ref.current.style.height = `${ref.current.scrollHeight}px`;
+                            ref.current.style.height = `1.6rem`;
                         }
                     }, subDelay * index);
                 });
@@ -411,6 +411,11 @@ export default function Resume(props) {
             default:
                 console.log(`titles weren't assigned for ${section.title}, ${index, itemIndex}`);
         }
+        if (item.titleBold) {
+            title1 = <p><b>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</b></p>;
+        } else {
+            title1 = <p style={{color:"#666"}}>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</p>;
+        }
 
 
         return (
@@ -420,7 +425,7 @@ export default function Resume(props) {
                 onClick={() => toggleCollapse(`${index}_${itemIndex}`)}
             >
                 <div className='item-title'>
-                    <p><b>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</b></p>
+                    <>{title1}</>
                     <p className='date'><i>{item.date1} {item.date2 && (<>&ndash; {item.date2}</>)}</i></p>
                 </div>
                 <span className='button_arrow' ref={getArrowRef(index, itemIndex)}>
@@ -502,7 +507,7 @@ export default function Resume(props) {
 
             return (
                 <div className="item" key={itemIndex} ref={getItemRef(index, itemIndex)}>
-                    <div className="item-title" style={{ marginLeft: `4.36vw`, marginRight: `4.36vw` }}>
+                    <div className="item-title" style={{ paddingLeft: `6.5rem`, paddingRight: `6.5rem` }}>
                         <p>
                             {parts.map((part, i) => {
                                 if (part.startsWith('*') && part.endsWith('*')) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Menu from './components/Menu.js';
 import About from './components/About.js';
 import Resume from './Components/Resume.js'; // Fixed path
@@ -53,14 +53,30 @@ export default function Display(props) {
             );
             break;
     }
+    
+    const bgRef = useRef(null);
+
+    useEffect(() => {
+        const handler = (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 100;
+            const y = (e.clientY / window.innerHeight - 0.5) * 100;
+            if (bgRef.current) {
+                bgRef.current.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        };
+
+        document.addEventListener("mousemove", handler);
+
+        return () => document.removeEventListener("mousemove", handler);
+    }, []);
 
     return (
-        <div className='display'>
-            <Menu
-                state={state}
-                setState={setState}
-            />
-            {code}
-        </div>
+        <>
+            <div id="bg" ref={bgRef}></div>
+            <div className='display'>
+                <Menu state={state} setState={setState} />
+                {code}
+            </div>
+        </>
     );
 }

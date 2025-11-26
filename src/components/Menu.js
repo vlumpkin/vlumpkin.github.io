@@ -29,7 +29,7 @@ export default function Menu(props) {
                 pages.forEach((page, index) => {
                     setTimeout(() => {
                         const ref = getPageRef(page.toUpperCase());
-                        ref.current.style.width = `8vw`;
+                        ref.current.style.width = `13rem`;
                     }, subDelay * index)
                 })
                 setStep(2);
