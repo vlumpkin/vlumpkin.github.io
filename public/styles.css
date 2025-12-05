@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Rokkitt:wght@300;400;500;700&display=swap');
+@import "@fontsource/satoshi/400.css";
 
 :root {
     --backgroundCol: #fffaf0;
@@ -6,8 +7,11 @@
     --font: 'Gill Sans MT';
     --font-sans: 'Ubuntu', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-serif: 'Rokkitt', 'Times New Roman', serif;
-    --widthTransition: width 1.2s ease;
-    --heightTransition: height 1.2s ease;
+    --font-Satoshi: "Satoshi", sans-serif;
+    --widthTransition: width 1s ease;
+    --heightTransition: height 1s ease;
+    --gapTransition: gap 1s ease;
+    --marginTransition: margin 0.3s ease;
 }
 
 *, *:before, *:after {
@@ -102,7 +106,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 0.52vw;
-    font-family: var(--font-serif);
+    font-family: var(--font-Satoshi);
     font-size: 1.35rem;
     width: 0;
     height: auto;
@@ -128,15 +132,20 @@ main {
 
 .bottomContainer {
     height: fit-content;
-    transition: var(--heightTransition);
+    transition: var(--heightTransition), var(--gapTransition);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .section {
-    margin-bottom: 0.42vw;
     height: fit-content;
     overflow: visible;
     transition: var(--heightTransition);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 .header {
@@ -168,17 +177,20 @@ main {
 }
 
 .details {
-    font-family: var(--font-sans);
-    font-size: 1.2zrem;
+    font-family: var(--font-Satoshi);
+    font-size: 1.3rem;
     height: 0;
     overflow: hidden;
-    transition: var(--heightTransition);
+    transition: var(--heightTransition), var(--gapTransition), var(--marginTransition);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .item {
     width: 0;
-    margin-top: .4rem;
-    overflow: hidden;
+    overflow: visible;
     text-wrap: nowrap;
     transition: var(--widthTransition);
 }
@@ -187,20 +199,20 @@ main {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding-top: 0.36vw;
+    align-items: center;
 }
 
 .date {
     text-align: right;
+    font-size: 1.25rem;
 }
 
 .item-description {
     height: 0;
-    padding-top: 0.29vw;
     padding-left: 8rem;
     padding-right: 8rem;
     letter-spacing: -0.016vw;
-    transition: height 0.8s ease;
+    transition: var(--heightTransition), var(--marginTransition);
 }
 
 .item-description ul {
@@ -208,11 +220,14 @@ main {
     margin-left: 1.04vw;
     text-wrap: pretty;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: var(--gapTransition);
 }
 
 .item-description li {
-    padding-bottom: 0.16vw;
-    padding-top: 0.1vw;
+    line-height: 2rem;
 }
 
 .item-description p {
@@ -241,10 +256,10 @@ button.collapsible {
     font-size: 1.125em;
     font-weight: bold;
     float: left;
-    margin-top: 0.31vw;
-    margin-left: 0.78vw;
+    margin-top: .14rem;
+    margin-left: .5rem;
     height: 0;
-    transition: height 1.8s ease;
+    transition: height .2s ease;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -286,7 +301,7 @@ button.collapsible {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
     font-family: var(--font);
     box-sizing: content-box;
-    transition: width 1.2s ease;
+    transition: var(--widthTransition);
 }
 
 .menuTab p {
@@ -332,7 +347,7 @@ button.collapsible {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 1.3em;
+    font-size: 1.3rem;
     gap: 12px;
     font-family: var(--font);
     font-weight: 100;

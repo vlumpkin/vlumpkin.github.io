@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 
 export default function Resume(props) {
     const { editing, source } = props;
@@ -263,7 +263,7 @@ export default function Resume(props) {
     useEffect(() => {
         if (!editing && triggerStep === 8) {
             const timer = setTimeout(() => {
-                const subDelay = 100;
+                const subDelay = 90;
 
                 let count = 0; // Initialize a counter for delays
 
@@ -286,7 +286,7 @@ export default function Resume(props) {
                 });
 
                 setTriggerStep(9);
-            }, delay + 100);
+            }, delay + 1000);
             return () => clearTimeout(timer);
         }
     }, [triggerStep]);
@@ -301,16 +301,21 @@ export default function Resume(props) {
                     PaperContentRef,
                     BottomContainerRef,
                     ...sectionDetailsRefs.current,
-                    sectionItemRefs.current.map((section, index) => {
+                    ...sectionItemRefs.current.map((section, index) => {
                         if (sectionItemRefs.current[index]) {
-                            section.map((item, itemIndex) => {
-                                if (sectionItemRefs.current[index] && sectionItemRefs.current[index][itemIndex]) {
-                                    item[0];
-                                }
-                            })
+                        return section.map((item, itemIndex) => {
+                            if (
+                            sectionItemRefs.current[index] &&
+                            sectionItemRefs.current[index][itemIndex]
+                            ) {
+                            return item[0];   // ✔ preserves your validation and returns the ref
+                            }
+                            return null;        // or undefined — up to you
+                        });
                         }
-                    })
-                ]
+                        return [];              // no section → empty list
+                    }).flat()                 // flatten nested arrays
+                ];
 
                 visible.forEach(ref => {
                     if (ref && ref.current) {
@@ -412,7 +417,7 @@ export default function Resume(props) {
                 console.log(`titles weren't assigned for ${section.title}, ${index, itemIndex}`);
         }
         if (item.titleBold) {
-            title1 = <p><b>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</b></p>;
+            title1 = <p style={{ fontWeight: "500"}}>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</p>;
         } else {
             title1 = <p style={{color:"#666"}}>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</p>;
         }
@@ -437,12 +442,15 @@ export default function Resume(props) {
 
     // Helper function to formattedSection() that returns item details
     const itemDetails = (item, index, itemIndex) => {
+        const collapsed = collapsedSections[`${index}_${itemIndex}`];
         return (
             <div
                 className='item-description'
                 style={{
-                    height: collapsedSections[`${index}_${itemIndex}`] ? `${calculateHeight(index, itemIndex)}px` : '0',
-                    overflow: collapsedSections[`${index}_${itemIndex}`] ? 'visible' : 'hidden',
+                    height: collapsed ? `${calculateHeight(index, itemIndex)}px` : '0',
+                    overflow: collapsed ? 'visible' : 'hidden',
+                    marginTop: collapsed ? '12px' : '0',
+                    marginBottom: collapsed ? '12px' : '0',
                 }}
                 ref={getItemDescRef(index, itemIndex)}
             >
@@ -493,7 +501,7 @@ export default function Resume(props) {
     };
 
     // Helper function for itemDetails returns the bullet points for each item's details
-    const formatStringTechnicalSkills = (tempString, index) => {
+    const formatStringSkills = (tempString, index, interpersonal) => {
         // Split the input string by lines
         const lines = tempString.split('\n');
 
@@ -507,7 +515,13 @@ export default function Resume(props) {
 
             return (
                 <div className="item" key={itemIndex} ref={getItemRef(index, itemIndex)}>
-                    <div className="item-title" style={{ paddingLeft: `6.5rem`, paddingRight: `6.5rem` }}>
+                    <div className="item-title" style={{ 
+                        paddingLeft: `6.5rem`, 
+                        paddingRight: `6.5rem`, 
+                        ...(interpersonal 
+                            ? {alignItems: 'center', justifyContent: 'center'} 
+                            : {})
+                    }}>
                         <p>
                             {parts.map((part, i) => {
                                 if (part.startsWith('*') && part.endsWith('*')) {
@@ -526,37 +540,6 @@ export default function Resume(props) {
             );
         });
     };
-
-    const formatStringInterpersonalSkills = (tempString) => {
-        // Split the input string by lines
-        const lines = tempString.split('\n');
-
-        // Map through each line
-        return lines.map((line, index) => {
-            if (line.length === 0) {
-                return null;
-            }
-
-            const parts = line.split(/(\*[^*]+\*|\"[^\"]+\")/); // Split by asterisks or quotes
-
-            return (
-                <p key={index}>
-                    {parts.map((part, i) => {
-                        if (part.startsWith('*') && part.endsWith('*')) {
-                            // Remove the asterisks and return bold text
-                            return <strong key={i}>{part.slice(1, -1)}</strong>;
-                        } else if (part.startsWith('"') && part.endsWith('"')) {
-                            // Remove the quotes and return underlined text
-                            return <u key={i}>{part.slice(1, -1)}</u>;
-                        }
-                        // Return normal text
-                        return part;
-                    })}
-                </p>
-            );
-        });
-    };
-
     // Returns all content below name and contacts
     const formattedSection = () => {
         return (
@@ -568,11 +551,6 @@ export default function Resume(props) {
                         <div
                             className='details'
                             ref={getDetailsRef(index)}
-                            style={
-                                (section.title === 'Technical Skills')
-                                    ? { marginBottom: '1.1vh' }
-                                    : {}
-                            }
                             key={'details' + index}
                         >
                             {(section.title !== 'Technical Skills' && section.title !== 'Interpersonal Skills') && // Sections with collapsible buttons
@@ -586,14 +564,12 @@ export default function Resume(props) {
                                 ))
                             }
                             {(section.title === 'Technical Skills') && // Technical skills section
-                                formatStringTechnicalSkills(section.details, index)
+                                formatStringSkills(section.details, index, false)
                             }
                             {(section.title === 'Interpersonal Skills') && // Interpersonal skills section
-                                (<><div className='item-title'></div>
-                                    <div className='skills' ref={getItemRef(index, 0)} style={{ width: '0', transition: 'width 1.2s ease', textWrap: 'nowrap', overflow: 'hidden' }}>
-                                        {formatStringInterpersonalSkills(section.details)}
-                                    </div>
-                                </>)
+                                (
+                                    formatStringSkills(section.details, index, true)
+                                )
                             }
                         </div >
                     </div >

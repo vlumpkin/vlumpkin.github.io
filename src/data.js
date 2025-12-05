@@ -19,7 +19,7 @@ export const vResumeContent = {
             date2: "2027",
             details:
                 "*Direct Admission:* Paul G. Allen School of Computer Science, Dean's List \n" +
-                "*Activities:* Student Advisory Council (CSE) Chair, Club Soccer Co-Captain, Soccer Club, Fraternity: Pi Kappa Phi, Dean's List\n"
+                "*Activities:* Student Advisory Council (CSE) Chair, Club Soccer Co-Captain, Soccer Club, Fraternity: Pi Kappa Phi\n"
         },
         {
             school: "Lake Washington High School",
@@ -42,9 +42,8 @@ export const vResumeContent = {
             date2: "June 2025",
             details:
                 "Grant dashboard assembled for UW's Student Technology Fee (STF) \n" +
-                "Fetch data through submittable API \n" +
-                "Optimized performance via dynamic parsing: questions, forms, labels, submissions, reviews \n" +
-                "Leverages pre-built *XLSM file* to generate final report with *injected dynamic VBA* \n" +
+                "Data fetch via API, *23x* faster execution via dynamic parsing \n" +
+                "Leverages pre-built *XLSM file* to generate *injected dynamic VBA* report\n" +
                 "\"Technologies Used:\" Github, JavaScript, Python, Submittable API, VBA \n"
             ,
         },
@@ -93,7 +92,7 @@ export const vResumeContent = {
                 "\"Technologies Used:\" Power BI, Excel, some Python, minimal DAX\n"
             ,
             code:
-                "<div  style='margin-top: 0.52vw; margin-bottom: 0.52vw; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
+                "<div  style='margin-top: 12px; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
                 "<div style='width: fit-content; height: auto; text-align: center; border-color: #000;'>" +
                 "<iframe " +
                 "src='https://app.powerbi.com/view?r=eyJrIjoiMDMxNzA5MGUtZWNhYy00YWQxLThjMTktN2M5ZWNjYWJhZmUzIiwidCI6IjA5YzU1ZWU4LTAxZWQtNGE0My1iOWVlLTFmZWMzMDAxN2RlNiJ9'" +
@@ -114,7 +113,7 @@ export const vResumeContent = {
             code: (
                 "<p style='color: #199b0f; font-weight: bold; line-height: 1.09vw; width: 100%; display: flex; justify-content: center;'>The entire dashboard is interactive," +
                 "even the graphs, try selecting and unselecting different categories, hold ctrl for multiple!</p>" +
-                "<div style='margin-top: 0.52vw; margin-bottom: 0.52vw; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
+                "<div style='margin-top: 12px; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
                 "<div style='width: fit-content; height: auto; text-align: center; border-color: #000;'>" +
                 "<iframe " +
                 "src='https://app.powerbi.com/view?r=eyJrIjoiYjk3YzYxMGQtYmEyNC00YjRkLWE0OGEtMThiYTBlZDIwZGRlIiwidCI6IjA5YzU1ZWU4LTAxZWQtNGE0My1iOWVlLTFmZWMzMDAxN2RlNiJ9&pageName=ReportSection982a249f7c63ee9a307b'" +
