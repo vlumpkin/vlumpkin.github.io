@@ -454,14 +454,20 @@ export default function Resume(props) {
                 }}
                 ref={getItemDescRef(index, itemIndex)}
             >
-                <ul>
-                    {formatStringGeneral(item.details)}
-                    {item.tech && (
-                        <li key={index}><p><u>Technologies Used: </u>
-                            {item.tech.join(', ')}
-                        </p></li>
-                    )}
-                </ul>
+                <div  style={{marginTop: '12px', width: '100%', display: 'flex', justifyContent: 'center', overflow: 'visible'}}>
+                    <div style={{width: 'fit-content', height: 'auto', borderColor: '#000'}}>
+                        <div className='item-description-content'>
+                            <ul>
+                                {formatStringGeneral(item.details)}
+                                {item.tech && (
+                                    <li key={index}><p><u>Technologies Used: </u>
+                                        {item.tech.join(', ')}
+                                    </p></li>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 {item.code && (
                     <div dangerouslySetInnerHTML={{ __html: item.code }}>
                     </div>

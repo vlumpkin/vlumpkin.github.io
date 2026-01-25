@@ -226,6 +226,15 @@ main {
     transition: var(--gapTransition);
 }
 
+.item-description-content {
+    width: 77rem;
+    padding: 1rem 6rem;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 0.78vw; 
+    box-shadow: 0 0.1vw 0.26vw 0.21vw rgba(0, 0, 0, 0.3);
+}
+
 .item-description li {
     line-height: 2rem;
 }

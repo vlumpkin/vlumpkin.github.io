@@ -35,6 +35,28 @@ export const vResumeContent = {
         "*Development Tools:* Git, GitHub, GitLab, VSCode, jGrasp, Bash, PowerShell, PowerBI\n",
     projectEntries: [
         {
+            title: "Primary-Backup Service Visualization",
+            organization: "Personal Project",
+            titleBold: true,
+            date1: "December 2025",
+            details:
+                "Combined demonstration of CSE 442 (Data Visualization) and CSE 452 (Distributed Systems) learning\n" +
+                "*NOT AN ANIMATION:* State consistency ensured, message randomness integrated, network/node failure not implemented but accounted for \n" +
+                "\"Technologies Used:\" D3 library, Observable Notebook\n"
+            ,
+            code:
+                "<p style='margin-top: 15px; color: #199b0f; font-weight: bold; line-height: 1.09vw; width: 100%; display: flex; justify-content: center;'>" +
+                "<a href='https://vlumpkin.pages.cs.washington.edu/-/cse442-assignment4/-/jobs/1992613/artifacts/public/index.html' target='_blank''>" +
+                "Link to full project</a></p>" +
+                "<div  style='margin-top: 15px; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
+                "<div style='width: fit-content; height: auto; text-align: center; border-color: #000;'>" +
+                "<iframe " +
+                "src='https://observablehq.com/embed/b94ac1f36a2d4447@4512?cells=controls3%2CcreateDashboard'" +
+                "allowFullScreen='true' style='border: none; width: 77rem; height: 970px; align-items: center; background: white; border-color: #000; border-radius: 0.78vw; box-shadow: 0 0.1vw 0.26vw 0.21vw rgba(0, 0, 0, 0.3);'></iframe>" +
+                "</div>" +
+                "</div>"
+        },
+        {
             title: "STF Grant Dashboard", 
             organization: "University of Washington", 
             titleBold: true,
@@ -92,7 +114,7 @@ export const vResumeContent = {
                 "\"Technologies Used:\" Power BI, Excel, some Python, minimal DAX\n"
             ,
             code:
-                "<div  style='margin-top: 12px; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
+                "<div  style='margin-top: 15px; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
                 "<div style='width: fit-content; height: auto; text-align: center; border-color: #000;'>" +
                 "<iframe " +
                 "src='https://app.powerbi.com/view?r=eyJrIjoiMDMxNzA5MGUtZWNhYy00YWQxLThjMTktN2M5ZWNjYWJhZmUzIiwidCI6IjA5YzU1ZWU4LTAxZWQtNGE0My1iOWVlLTFmZWMzMDAxN2RlNiJ9'" +
@@ -111,9 +133,9 @@ export const vResumeContent = {
                 "\"Technologies Used:\" Power BI, Excel\n"
             ,
             code: (
-                "<p style='color: #199b0f; font-weight: bold; line-height: 1.09vw; width: 100%; display: flex; justify-content: center;'>The entire dashboard is interactive," +
-                "even the graphs, try selecting and unselecting different categories, hold ctrl for multiple!</p>" +
-                "<div style='margin-top: 12px; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
+                "<p style='margin-top: 15px; color: #199b0f; font-weight: bold; line-height: 1.09vw; width: 100%; display: flex; justify-content: center;'>The entire dashboard is interactive," +
+                " even the graphs, try selecting and unselecting different categories, hold ctrl for multiple!</p>" +
+                "<div  style='margin-top: 15px; width: 100%; display: flex; justify-content: center; overflow: visible;'>" +
                 "<div style='width: fit-content; height: auto; text-align: center; border-color: #000;'>" +
                 "<iframe " +
                 "src='https://app.powerbi.com/view?r=eyJrIjoiYjk3YzYxMGQtYmEyNC00YjRkLWE0OGEtMThiYTBlZDIwZGRlIiwidCI6IjA5YzU1ZWU4LTAxZWQtNGE0My1iOWVlLTFmZWMzMDAxN2RlNiJ9&pageName=ReportSection982a249f7c63ee9a307b'" +
