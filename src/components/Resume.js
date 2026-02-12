@@ -122,7 +122,7 @@ export default function Resume(props) {
                     PaperRef.current.style.width = `80rem`;
                 }
                 if (TopContainerRef && TopContainerRef.current) {
-                    TopContainerRef.current.style.height = `8vh`;
+                    TopContainerRef.current.style.height = `fit-content`;
                 }
                 setTriggerStep(2);
             }, delay);

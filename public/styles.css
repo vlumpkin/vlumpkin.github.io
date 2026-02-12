@@ -74,13 +74,15 @@ main {
 .paperContent {
     height: fit-content;
     width: 100%;
-    transition: var(--heightTransition);
+    transition: var(--heightTransition), var(--gapTransition);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2vh;
     box-sizing: border-box;
 }
 
 .topContainer {
-    margin-bottom: 2.2rem;
     height: 0;
     transition: var(--heightTransition);
 }
