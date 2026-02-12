@@ -11,7 +11,7 @@
     --widthTransition: width 1s ease;
     --heightTransition: height 1s ease;
     --gapTransition: gap 1s ease;
-    --marginTransition: margin 0.3s ease;
+    --marginTransition: margin .5s ease;
 }
 
 *, *:before, *:after {
