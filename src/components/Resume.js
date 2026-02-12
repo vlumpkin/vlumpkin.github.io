@@ -416,8 +416,8 @@ export default function Resume(props) {
             default:
                 console.log(`titles weren't assigned for ${section.title}, ${index, itemIndex}`);
         }
-        if (item.titleBold) {
-            title1 = <p style={{ fontWeight: "500"}}>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</p>;
+        if (item.isRelevant) {
+            title1 = <p>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</p>;
         } else {
             title1 = <p style={{color:"#666"}}>{title1} {(title1 && title2) && (<>&mdash;</>)} {title2}</p>;
         }
@@ -450,12 +450,12 @@ export default function Resume(props) {
                     height: collapsed ? `${calculateHeight(index, itemIndex)}px` : '0',
                     overflow: collapsed ? 'visible' : 'hidden',
                     marginTop: collapsed ? '12px' : '0',
-                    marginBottom: collapsed ? '12px' : '0',
+                    marginBottom: collapsed ? '10px' : '0',
                 }}
                 ref={getItemDescRef(index, itemIndex)}
             >
-                <div  style={{marginTop: '12px', width: '100%', display: 'flex', justifyContent: 'center', overflow: 'visible'}}>
-                    <div style={{width: 'fit-content', height: 'auto', borderColor: '#000'}}>
+                <div  style={{paddingTop: '.5rem', marginTop: '0px', width: '100%', display: 'flex', justifyContent: 'center'}}>
+                    <div style={{width: '100%', height: 'auto', borderColor: '#000'}}>
                         <div className='item-description-content'>
                             <ul>
                                 {formatStringGeneral(item.details)}
@@ -560,13 +560,13 @@ export default function Resume(props) {
                             key={'details' + index}
                         >
                             {(section.title !== 'Technical Skills' && section.title !== 'Interpersonal Skills') && // Sections with collapsible buttons
-                                section.details.map((item, itemIndex) => (
-                                    <div className='item' key={index + ' ' + itemIndex} ref={getItemRef(index, itemIndex)}>
+                                section.details.map((item, itemIndex) => (item.isRelevant &&
+                                    (<div className='item' key={index + ' ' + itemIndex} ref={getItemRef(index, itemIndex)}>
                                         {itemHeader(section.title, item, index, itemIndex)}
                                         {item.details && (
                                             itemDetails(item, index, itemIndex)
                                         )}
-                                    </div>
+                                    </div>)
                                 ))
                             }
                             {(section.title === 'Technical Skills') && // Technical skills section

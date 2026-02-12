@@ -72,9 +72,10 @@ export default function Display(props) {
 
     return (
         <>
-            <div id="bg" ref={bgRef}></div>
+            {/* <div id="bg" ref={bgRef}></div> */}
+            <div id="bg-white"></div>
             <div className='display'>
-                <Menu state={state} setState={setState} />
+                {/* <Menu state={state} setState={setState} /> */}
                 {code}
             </div>
         </>

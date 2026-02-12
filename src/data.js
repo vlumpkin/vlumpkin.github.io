@@ -12,7 +12,7 @@ export const vResumeContent = {
             school: "University of Washington",
             degree: "BS",
             major: 'Computer Science',
-            titleBold: true,
+            isRelevant: true,
             secondMajor: '',
             gpa: '',
             date1: "2023",
@@ -34,10 +34,11 @@ export const vResumeContent = {
         "*Learning:* React, Java, JavaScript, TypeScript, C++, Python, HTML/CSS, Linux\n" +
         "*Development Tools:* Git, GitHub, GitLab, VSCode, jGrasp, Bash, PowerShell, PowerBI\n",
     projectEntries: [
+        // Primary-Backup Service Visualization
         {
             title: "Primary-Backup Service Visualization",
             organization: "Personal Project",
-            titleBold: true,
+            isRelevant: true,
             date1: "December 2025",
             details:
                 "Combined demonstration of CSE 442 (Data Visualization) and CSE 452 (Distributed Systems) learning\n" +
@@ -56,10 +57,11 @@ export const vResumeContent = {
                 "</div>" +
                 "</div>"
         },
+        // STF Grant Dashboard
         {
             title: "STF Grant Dashboard", 
             organization: "University of Washington", 
-            titleBold: true,
+            isRelevant: true,
             date1: "April 2025", 
             date2: "June 2025",
             details:
@@ -69,10 +71,11 @@ export const vResumeContent = {
                 "\"Technologies Used:\" Github, JavaScript, Python, Submittable API, VBA \n"
             ,
         },
+        // Ignite Robotics Admin Dashboard
         {
             title: "Ignite Robotics Admin Dashboard",
             organization: "Ignite Robotics",
-            titleBold: true,
+            isRelevant: true,
             date1: "In-Progress",
             details:
                 "Integrating all of Ignite’s software operations into a secure admin platform\n" +
@@ -80,6 +83,7 @@ export const vResumeContent = {
                 "\"Technologies Used:\" Github, React, JavaScript, HTML/CSS, DocuSign API, Stripe API\n"
             ,
         },
+        // Resume Builder
         {
             title: "Resume Builder",
             organization: "Personal Project",
@@ -92,6 +96,7 @@ export const vResumeContent = {
             ,
             
         },
+        // Bias Buster News
         {
             title: "Bias Buster News",
             organization: "Dub Hacks Hackathon",
@@ -101,10 +106,11 @@ export const vResumeContent = {
                 "\"Technologies Used:\" Java, JavaScript, HTML/CSS, News API\n"
             ,
         },
+        // College Admission Dashboard
         {
             title: "College Admission Dashboard",
             organization: "Personal Project",
-            titleBold: true,
+            isRelevant: true,
             date1: "December 2022",
             details:
                 "Built an interactive dashboard that centralized admission data from colleges’ Common Data Sets (CDS)\n" +
@@ -123,10 +129,11 @@ export const vResumeContent = {
                 "</div>"
 
         },
+        // Kirkland Sustainability Master Plan Dashboard
         {
             title: "Kirkland Sustainability Master Plan Dashboard",
             organization: "City of Kirkland",
-            titleBold: true,
+            isRelevant: true,
             date1: "September 2022",
             details:
                 "Visualized a PDF table into a navigable dashboard, increasing transparency around funding and resource allocation for stakeholders, taxpayers, community members, and interested parties\n" +
@@ -146,18 +153,20 @@ export const vResumeContent = {
         },
     ],
     experienceEntries: [
+        // Amazon Jr. Software Developer
         {
             organization: "Amazon",
             position: "Jr. Software Developer",
-            titleBold: true,
+            isRelevant: true,
             date1: "June 2025",
             date2: "Present",
             details: "Selection Gap Monitoring (OASIS) \n",
         },
+        // Ignite Robotics
         {
             organization: "Ignite Robotics",
             position: "Independent Contractor, ex. Managing Director",
-            titleBold: true,
+            isRelevant: true,
             date1: "October 2021",
             date2: "Present",
             details:
@@ -182,16 +191,18 @@ export const vResumeContent = {
                 "</div>"
             ,
         },
+        // UW STF Independent Consultant
         {
             organization: "University of Washington",
             position: "Independent Consultant",
-            titleBold: true,
+            isRelevant: true,
             date1: "April 2025",
             date2: "June 2025",
             details: 
                 "Contracted by UW's Student Technology Fee (STF)\n" +
                 "Automated their grant-approval system *(overseeing $10M)* via an intake rubric, low-level data transformation/formatting, and visualization templates \n",
         },
+        // NO 2117 Youth Advocate
         {
             organization: "NO 2117",
             position: "Youth Advocate",
@@ -199,10 +210,11 @@ export const vResumeContent = {
             date2: "November 2024",
             details: "Personally recruited by Washington's Governor Inslee to campaign against I-2117 \n",
         },
+        // MathGPT Lead Data Analyst
         {
             organization: "MathGPT",
             position: "Lead Data Analyst",
-            titleBold: true,
+            isRelevant: true,
             date1: "May 2024",
             date2: "July 2024",
             details:
@@ -221,6 +233,7 @@ export const vResumeContent = {
                 "</div>"
             ,
         },
+        // City of Kirkland Climate Justice Intern
         {
             organization: "City of Kirkland",
             position: "Climate Justice Intern",
@@ -231,6 +244,7 @@ export const vResumeContent = {
                 "Built out a Power BI dashboard to visualize the SMP\n"
             ,
         },
+        // Starbucks Barista
         {
             organization: "Starbucks",
             position: "Barista",
@@ -240,6 +254,7 @@ export const vResumeContent = {
                 "Thought this would work better than dating apps\n"
             ,
         },
+        // ACE Hardware General Associate
         {
             organization: "ACE Hardware",
             position: "General Associate",
@@ -249,6 +264,7 @@ export const vResumeContent = {
                 "Getting in touch with hardware before I become a pro in software \n"
             ,
         },
+        // Dunn Lumber General Associate
         {
             organization: "Dunn Lumber",
             position: "General Associate",
@@ -263,7 +279,7 @@ export const vResumeContent = {
         {
             organization: "UW Computer Science Student Advisory Council",
             position: "Chair",
-            titleBold: true,
+            isRelevant: true,
             date1: "October 2023",
             date2: "Present",
             details:
