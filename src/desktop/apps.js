@@ -349,7 +349,7 @@ export const apps = {
         height: 320,
         render: () => (
             <div className="recyclebin">
-                <p>The Recycle Bin is empty.</p>
+                <p>Pineapple on pizza.</p>
             </div>
         ),
     },

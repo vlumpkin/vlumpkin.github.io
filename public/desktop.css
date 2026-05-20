@@ -20,6 +20,16 @@
     pointer-events: none;
 }
 
+/* Marquee selection rectangle (semi-transparent lasso). */
+.desktop__marquee {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    background: rgba(120, 180, 240, 0.22);
+    border: 1px solid rgba(180, 220, 255, 0.85);
+    box-shadow: 0 0 0 1px rgba(60, 110, 170, 0.4) inset;
+}
+
 /* ----- Desktop icons ----- */
 .desktop-icon {
     position: absolute;
@@ -452,3 +462,86 @@
 /* ----- Simple app bodies ----- */
 .mycomputer, .recyclebin { padding: 16px; font-size: 13px; }
 .mycomputer ul { padding-left: 18px; }
+
+/* ----- System dialog ----- */
+.dialog-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+.dialog {
+    min-width: 380px;
+    max-width: 480px;
+    background: linear-gradient(180deg, #f3f7fc 0%, #e1ebf6 100%);
+    border: 1px solid rgba(70, 110, 160, 0.7);
+    border-radius: 6px 6px 2px 2px;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+        0 18px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    color: #1a2a3f;
+    animation: dialogPop 120ms ease-out;
+}
+@keyframes dialogPop {
+    from { transform: scale(0.94); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+}
+.dialog__titlebar {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px 0 10px;
+    background: linear-gradient(180deg, #d8e6f4 0%, #b5cce4 45%, #9dbdde 55%, #c4daee 100%);
+    border-bottom: 1px solid rgba(70, 110, 160, 0.6);
+    user-select: none;
+}
+.dialog__title { font-size: 12px; font-weight: 600; color: #1c3a5f; }
+.dialog__body {
+    display: flex;
+    gap: 14px;
+    padding: 20px 22px 18px;
+    background: #fff;
+}
+.dialog__icon {
+    flex: 0 0 38px;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, #ffe98a, #f4b400 60%, #a87600);
+    border: 1px solid #7a5500;
+    color: #2a1c00;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+.dialog__text { flex: 1; }
+.dialog__message { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.dialog__detail { font-size: 12px; color: #4a5a72; }
+.dialog__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, #f3f7fc, #dde7f3);
+    border-top: 1px solid #b7c8de;
+}
+.dialog__ok {
+    min-width: 80px;
+    height: 24px;
+    border: 1px solid #7898be;
+    background: linear-gradient(180deg, #f8fbff, #cbdcef);
+    border-radius: 3px;
+    color: #1c3a5f;
+    font-size: 12px;
+    cursor: pointer;
+}
+.dialog__ok:hover { background: linear-gradient(180deg, #ffffff, #d8e8f8); border-color: #5a82b4; }
+.dialog__ok:focus { outline: 1px dotted #345b8a; outline-offset: 2px; }
