@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Display from './Display.js';
 
 export default function App() {
-    const [state, setState] = useState("Resume");
+    const [state, setState] = useState("Desktop");
     const [formData, setFormData] = useState({
         personalInfo: {
             firstName: 'Toggle the slider to edit!',

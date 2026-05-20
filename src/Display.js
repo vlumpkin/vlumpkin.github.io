@@ -1,16 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Menu from './components/Menu.js';
 import About from './components/About.js';
-import Resume from './Components/Resume.js'; // Fixed path
+import Resume from './components/Resume.js';
 import ResumeApp from './ResumeApp.js';
 import { vResumeContent } from './data.js';
 import MovingBar from './testing/MovingBar.js';
+import Desktop from './desktop/Desktop.js';
 
 export default function Display(props) {
     const { state, setState, formData, setFormData } = props;
     let code;
 
     switch (state) {
+        case "Desktop":
+            return <Desktop />;
         case "About":
             code = (
                 <About />

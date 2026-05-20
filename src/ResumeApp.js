@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Resume from './Components/Resume.js';
+import Resume from './components/Resume.js';
 import ResumeForm from './components/ResumeForm.js';
 
 export default function ResumeApp(props) {
