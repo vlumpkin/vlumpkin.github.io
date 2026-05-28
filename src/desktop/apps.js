@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import ScaledResume from './ScaledResume.js';
 import ScaledIframe from './ScaledIframe.js';
+import Camera from './Camera.js';
+import { photoStore, downloadPhoto } from './photoStore.js';
 
 // App registry. Each entry defines how a desktop icon launches into a window.
 // `kind: 'browser'` wraps content in a fake browser chrome (URL bar).
@@ -34,7 +36,7 @@ const explorerViews = {
         ],
     },
     Music: { path: 'Libraries › Music', items: [] },
-    Pictures: { path: 'Libraries › Pictures', items: [] },
+    Pictures: { path: 'Libraries › Pictures', items: [], dynamic: 'pictures' },
     Videos: {
         path: 'Libraries › Videos',
         items: [
@@ -54,7 +56,7 @@ const explorerViews = {
         items: [
             { name: 'Documents', kind: 'folder', goto: 'Documents', items: 3, modified: '5/02/2026 4:18 PM' },
             { name: 'Music', kind: 'folder', goto: 'Music', items: 0, modified: '3/19/2026 7:55 PM' },
-            { name: 'Pictures', kind: 'folder', goto: 'Pictures', items: 0, modified: '4/28/2026 11:03 AM' },
+            { name: 'Pictures', kind: 'folder', goto: 'Pictures', modified: '4/28/2026 11:03 AM' },
             { name: 'Videos', kind: 'folder', goto: 'Videos', items: 0, modified: '4/01/2026 2:20 PM' },
             { name: 'Projects', kind: 'folder', goto: 'Projects', items: 3, modified: '5/14/2026 9:42 AM' },
         ],
@@ -153,6 +155,7 @@ function FileExplorerBody({ openApp }) {
     const [history, setHistory] = useState([]);
     const [future, setFuture] = useState([]);
     const [selected, setSelected] = useState(null);
+    const photos = useSyncExternalStore(photoStore.subscribe, photoStore.getSnapshot);
 
     const navigate = (name) => {
         const target = explorerViews[name];
@@ -183,13 +186,23 @@ function FileExplorerBody({ openApp }) {
     };
 
     const activate = (it) => {
-        if (it.open) openApp(it.open);
+        if (it.download) downloadPhoto(it.download);
+        else if (it.open) openApp(it.open);
         else if (it.href) window.open(it.href, '_blank', 'noopener,noreferrer');
         else if (it.goto) navigate(it.goto);
     };
 
     const current = explorerViews[view] || { path: view, items: [] };
-    const items = current.items || [];
+    let items = current.items || [];
+    if (current.dynamic === 'pictures') {
+        items = photos.map((p) => ({
+            name: p.name,
+            kind: 'doc',
+            size: p.size,
+            modified: p.modified,
+            download: p,
+        }));
+    }
 
     return (
         <div className="explorer">
@@ -340,6 +353,15 @@ export const apps = {
             </div>
         ),
     },
+    camera: {
+        id: 'camera',
+        label: 'Camera',
+        icon: 'camera',
+        kind: 'app',
+        width: 480,
+        height: 620,
+        render: () => <Camera />,
+    },
     recycleBin: {
         id: 'recycleBin',
         label: 'Recycle Bin',
@@ -363,5 +385,6 @@ export const desktopLayout = [
     'kirklandSMP',
     'collegeAdmissions',
     'primaryBackup',
+    'camera',
     'recycleBin',
 ];
