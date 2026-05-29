@@ -696,3 +696,124 @@
 }
 .camera__thumb-btn:hover { background: linear-gradient(180deg, #4a525e, #2d333b); }
 .camera__thumb-btn--ghost { padding: 2px 5px; color: #d39b9b; }
+
+.camera__overlay-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform: scaleX(-1); /* match the mirrored video */
+}
+.camera__toggle {
+    font-size: 11px;
+    padding: 4px 10px;
+    border: 1px solid #4a5360;
+    background: linear-gradient(180deg, #3a414b, #232830);
+    color: #e9eef4;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.camera__toggle:hover:not(:disabled) { background: linear-gradient(180deg, #4a525e, #2d333b); }
+.camera__toggle.is-on { border-color: #39d97a; color: #b8f2cf; }
+.camera__toggle:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ----- Hand-gesture control ----- */
+.gesture-toggle {
+    position: fixed;
+    top: 10px;
+    right: 12px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(40,60,90,0.85), rgba(20,35,60,0.85));
+    color: #e9eef4;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+.gesture-toggle:hover { background: linear-gradient(180deg, rgba(55,80,115,0.9), rgba(30,50,80,0.9)); }
+.gesture-toggle.is-on {
+    border-color: #6ee59a;
+    color: #c9f7d8;
+    box-shadow: 0 0 0 1px rgba(110,229,154,0.35), 0 2px 6px rgba(0,0,0,0.35);
+}
+.gesture-toggle__icon { font-size: 14px; line-height: 1; }
+
+.gesture-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 120ms ease;
+    will-change: transform;
+}
+.gesture-cursor__dot {
+    position: absolute;
+    left: -6px;
+    top: -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffffff, #ff5151 70%);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.55), 0 0 12px rgba(255,80,80,0.7);
+}
+.gesture-cursor__ring {
+    position: absolute;
+    left: -16px;
+    top: -16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: transform 80ms ease, border-color 80ms ease;
+}
+.gesture-cursor.is-hold .gesture-cursor__ring {
+    transform: scale(0.55);
+    border-color: #6ee59a;
+    box-shadow: 0 0 12px rgba(110,229,154,0.6);
+}
+.gesture-cursor.is-tap .gesture-cursor__ring {
+    transform: scale(0.7);
+    border-color: #cfe6ff;
+    transition: transform 120ms ease, border-color 120ms;
+}
+.gesture-cursor.is-fist .gesture-cursor__ring {
+    transform: scale(1.6);
+    border-color: #ffd54a;
+}
+
+.gesture-cursor.is-swipe .gesture-cursor__ring {
+    transform: scale(2.2);
+    border-color: #ff8a3a;
+    transition: transform 240ms ease-out, border-color 240ms ease-out, opacity 240ms;
+    opacity: 0;
+}
+
+.gesture-cursor.is-dbl .gesture-cursor__ring {
+    transform: scale(0.4);
+    border-color: #6ec3ff;
+    box-shadow: 0 0 14px rgba(110,195,255,0.7);
+    transition: transform 200ms ease, border-color 200ms;
+}
+
+.gesture-frame {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9997;
+    border: 2px dashed #ffd54a;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.35), 0 0 20px rgba(255,213,74,0.35);
+    background: rgba(255,213,74,0.06);
+    transition: opacity 120ms ease;
+}

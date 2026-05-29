@@ -4,6 +4,7 @@ import DesktopIcon from './DesktopIcon.js';
 import Window from './Window.js';
 import BrowserChrome from './BrowserChrome.js';
 import Taskbar from './Taskbar.js';
+import GestureController from './GestureController.js';
 
 let nextId = 1;
 const nextZ = (() => { let z = 10; return () => ++z; })();
@@ -34,10 +35,13 @@ export default function Desktop() {
     const [selection, setSelection] = useState(() => new Set());
     const [marquee, setMarquee] = useState(null);
     const [dialog, setDialog] = useState(null);
+    const [gesturesOn, setGesturesOn] = useState(false);
+    const [gestureStatus, setGestureStatus] = useState('off');
 
     // Ref-mirrored so the global mousemove/up handlers can read current values
     // without re-binding on every state change.
     const dragRef = useRef(null);
+    const windowRefs = useRef(new Map());
     const iconPositionsRef = useRef(iconPositions);
     useEffect(() => { iconPositionsRef.current = iconPositions; }, [iconPositions]);
 
@@ -275,6 +279,10 @@ export default function Desktop() {
                 return (
                     <Window
                         key={w.id}
+                        ref={(r) => {
+                            if (r) windowRefs.current.set(w.id, r);
+                            else windowRefs.current.delete(w.id);
+                        }}
                         app={app}
                         win={w}
                         onClose={() => close(w.id)}
@@ -318,6 +326,37 @@ export default function Desktop() {
                     </div>
                 </div>
             )}
+
+            <button
+                type="button"
+                className={`gesture-toggle ${gesturesOn ? 'is-on' : ''}`}
+                onClick={() => setGesturesOn((v) => !v)}
+                onMouseDown={(e) => e.stopPropagation()}
+                title="Toggle hand-gesture control"
+            >
+                <span className="gesture-toggle__icon" aria-hidden>✋</span>
+                <span className="gesture-toggle__label">
+                    {gestureStatus === 'loading' ? 'Loading…' :
+                     gestureStatus === 'failed' ? 'Failed' :
+                     gesturesOn ? 'Hands on' : 'Hands off'}
+                </span>
+            </button>
+
+            <GestureController
+                enabled={gesturesOn}
+                onStatusChange={setGestureStatus}
+                onSwipeClose={() => { if (activeId != null) close(activeId); }}
+                onFrameResizeStart={() => {
+                    if (activeId == null) return null;
+                    const ref = windowRefs.current.get(activeId);
+                    if (!ref || ref.isMaximized()) return null;
+                    return { id: activeId, bounds: ref.getBounds() };
+                }}
+                onFrameResizeUpdate={({ id, x, y, w, h }) => {
+                    const ref = windowRefs.current.get(id);
+                    if (ref) ref.setBounds({ x, y, w, h });
+                }}
+            />
 
             <Taskbar
                 windows={windows}

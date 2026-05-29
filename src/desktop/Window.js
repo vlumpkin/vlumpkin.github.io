@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 
 const MIN_W = 320;
 const MIN_H = 200;
 const DIRS = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'];
 
-export default function Window({
+const Window = forwardRef(function Window({
     app,
     win,
     onClose,
@@ -13,11 +13,20 @@ export default function Window({
     onFocus,
     children,
     chrome,
-}) {
+}, ref) {
     const [pos, setPos] = useState({ x: win.x, y: win.y });
     const [size, setSize] = useState({ w: app.width, h: app.height });
     const drag = useRef(null);
     const resize = useRef(null);
+
+    useImperativeHandle(ref, () => ({
+        getBounds: () => ({ x: pos.x, y: pos.y, w: size.w, h: size.h }),
+        setBounds: ({ x, y, w, h }) => {
+            setPos({ x, y });
+            setSize({ w: Math.max(MIN_W, w), h: Math.max(MIN_H, h) });
+        },
+        isMaximized: () => !!win.maximized,
+    }), [pos, size, win.maximized]);
 
     useEffect(() => {
         const move = (e) => {
@@ -117,4 +126,6 @@ export default function Window({
             ))}
         </div>
     );
-}
+});
+
+export default Window;
