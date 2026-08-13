@@ -13,6 +13,20 @@
         radial-gradient(ellipse at 50% 40%, #6fb6ea 0%, #2a6fb4 55%, #103a6b 100%);
 }
 
+/* Name across the wallpaper. Canvas is drawn at 1/PIXEL scale in Wordmark.js and
+   blown up here with nearest-neighbour so the glyphs read as a bitmap font. */
+.desktop__wordmark {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
 .desktop__icons {
     position: absolute;
     inset: 0;

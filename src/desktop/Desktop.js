@@ -5,6 +5,7 @@ import Window from './Window.js';
 import BrowserChrome from './BrowserChrome.js';
 import Taskbar from './Taskbar.js';
 import GestureController from './GestureController.js';
+import Wordmark from './Wordmark.js';
 
 let nextId = 1;
 const nextZ = (() => { let z = 10; return () => ++z; })();
@@ -243,6 +244,9 @@ export default function Desktop() {
 
     return (
         <div className="desktop" onMouseDown={onDesktopMouseDown}>
+            {/* Wallpaper wordmark — purely decorative, sits under the icon layer. */}
+            <Wordmark />
+
             <div className="desktop__icons">
                 {desktopLayout.map((appId) => {
                     const app = apps[appId];
